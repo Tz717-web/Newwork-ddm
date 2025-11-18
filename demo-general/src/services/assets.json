@@ -73,7 +73,28 @@
         "https://alifd.alicdn.com/npm/@alifd/fusion-ui@2.0.2/build/lowcode/view.js",
         "https://alifd.alicdn.com/npm/@alifd/fusion-ui@2.0.2/build/lowcode/view.css"
       ]
+    },
+     {
+      "package": "tztest1",
+      "version": "0.1.0",
+      "library": "BizComp",
+      "urls": [
+        "https://unpkg.com/tztest1@0.1.0/build/lowcode/render/default/view.js",
+        "https://unpkg.com/tztest1@0.1.0/build/lowcode/render/default/view.css"
+      ],
+      "editUrls": [
+        "https://unpkg.com/tztest1@0.1.0/build/lowcode/view.js",
+        "https://unpkg.com/tztest1@0.1.0/build/lowcode/view.css"
+      ],
+      "advancedUrls": {
+        "default": [
+          "https://unpkg.com/tztest1@0.1.0/build/lowcode/render/default/view.js",
+          "https://unpkg.com/tztest1@0.1.0/build/lowcode/render/default/view.css"
+        ]
+      },
+      "advancedEditUrls": {}
     }
+    
   ],
   "components": [
     {
@@ -107,6 +128,22 @@
       "urls": {
         "default": "https://alifd.alicdn.com/npm/@alifd/fusion-ui@2.0.2/build/lowcode/meta.js",
         "design": "https://alifd.alicdn.com/npm/@alifd/fusion-ui@2.0.2/build/lowcode/meta.design.js"
+      }
+    },
+      {
+      "exportName": "Tztest1Meta",
+      "npm": {
+        "package": "tztest1",
+        "version": "0.1.0"
+      },
+      "url": "https://unpkg.com/tztest1@0.1.0/build/lowcode/meta.js",
+      "urls": {
+        "default": "https://unpkg.com/tztest1@0.1.0/build/lowcode/meta.js"
+      },
+      "advancedUrls": {
+        "default": [
+          "https://unpkg.com/tztest1@0.1.0/build/lowcode/meta.js"
+        ]
       }
     }
   ],

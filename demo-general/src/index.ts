@@ -21,6 +21,7 @@ import LogoSamplePlugin from './plugins/plugin-logo-sample';
 import SimulatorLocalePlugin from './plugins/plugin-simulator-locale';
 import lowcodePlugin from './plugins/plugin-lowcode-component';
 import appHelper from './appHelper';
+import TangZhiTest from './plugins/plugin-test';
 import './global.scss';
 
 async function registerPlugins() {
@@ -51,6 +52,10 @@ async function registerPlugins() {
   await plugins.register(DefaultSettersRegistryPlugin);
 
   await plugins.register(LogoSamplePlugin);
+  
+  await plugins.register(TangZhiTest);
+
+
 
   await plugins.register(ComponentPanelPlugin);
 
