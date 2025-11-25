@@ -1,0 +1,83 @@
+{
+  "name": "ali-lowcode-solution-my-newlowcode",
+  "version": "1.0.0",
+  "description": "AlLowCode Code Generate Solution - My Newlowcode",
+  "files": [
+    "src",
+    "lib",
+    "tests",
+    "jest.config.js",
+    ".editorconfig",
+    ".eslintignore",
+    ".eslintrc.js",
+    ".gitignore",
+    ".prettierignore",
+    ".prettierrc",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "demo-schema.json",
+    "package.json",
+    "README.md",
+    "tsconfig.json"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "jest --watch",
+    "build": "npm run clean && concurrently 'npm run build:ts' 'npm run lint'",
+    "build:ts": "tsc",
+    "check:type": "tsc -p . --noEmit",
+    "clean": "rimraf build dist lib generated",
+    "dev": "build-scripts start",
+    "lint": "eslint --ext .tsx,.ts,.js,.jsx src",
+    "lintfix": "eslint --fix --color --ext .tsx,.ts,.js,.jsx src",
+    "lint-staged": "lint-staged",
+    "prepublishOnly": "npm run build",
+    "postpublish": "git push origin master --tags",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:update-snapshots": "cross-env UPDATE_EXPECTED=true npx jest",
+    "demo": "npm run build && npx @alilc/lowcode-code-generator --solution . --output generated demo-schema.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:your-name/ali-lowcode-solution-my-newlowcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npm.xxx.com"
+  },
+  "dependencies": {
+    "@alilc/lowcode-code-generator": "^1.0.0",
+    "@alilc/lowcode-types": "^1.0.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.3",
+    "@types/jest": "^26.0.17",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "async": "^3.2.0",
+    "babel-runtime": "^6.26.0",
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.0",
+    "debug": "^4.1.1",
+    "eslint": "^7.31.0",
+    "eslint-config-ali": "^12.1.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "glob": "^7.2.0",
+    "husky": "4.2.5",
+    "jest": "^26.6.3",
+    "json5": "^2.2.0",
+    "lint-staged": "10.1.x",
+    "lodash": "^4.17.21",
+    "md5": "^2.2.1",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "4.x"
+  }
+}

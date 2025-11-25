@@ -6,15 +6,15 @@
         "id": "@alifd/next"
       },
       "urls": {
-        "default": "vendor/alifd_alicdn_com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.js",
-        "design": "vendor/alifd_alicdn_com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.design.js"
+        "default": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.js",
+        "design": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.design.js"
       },
       "devMode": "procode",
       "npm": {
         "package": "@alilc/lowcode-materials"
       },
       "exportName": "AlilcLowcodeMaterialsMeta",
-      "url": "vendor/alifd_alicdn_com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.js"
+      "url": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.js"
     },
     {
       "reference": {
@@ -22,15 +22,15 @@
         "id": "@alilc/lowcode-materials"
       },
       "urls": {
-        "default": "vendor/alifd_alicdn_com/npm/@alilc/lowcode-materials@1.1.0-beta.0/build/lowcode/meta.js",
-        "design": "vendor/alifd_alicdn_com/npm/@alilc/lowcode-materials@1.1.0-beta.0/build/lowcode/meta.design.js"
+        "default": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.1.0-beta.0/build/lowcode/meta.js",
+        "design": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.1.0-beta.0/build/lowcode/meta.design.js"
       },
       "devMode": "procode",
       "npm": {
         "package": "@alilc/lowcode-materials"
       },
       "exportName": "AlilcLowcodeMaterialsMeta",
-      "url": "vendor/alifd_alicdn_com/npm/@alilc/lowcode-materials@1.1.0-beta.0/build/lowcode/meta.js"
+      "url": "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.1.0-beta.0/build/lowcode/meta.js"
     },
     {
       "componentId": "LCC-6W61-LPKWJG5KCLG32CJCQF8A3-BHI5XCIM-PJ3",
@@ -741,7 +741,7 @@
     },
     {
       "urls": [
-        "vendor/g_alicdn_com/platform/c/lodash/4.6.1/lodash.min.js"
+        "https://g.alicdn.com/platform/c/lodash/4.6.1/lodash.min.js"
       ],
       "external": true,
       "library": "_",
@@ -750,7 +750,7 @@
     },
     {
       "urls": [
-        "vendor/g_alicdn_com/mylib/moment/2.24.0/min/moment.min.js"
+        "https://g.alicdn.com/mylib/moment/2.24.0/min/moment.min.js"
       ],
       "external": true,
       "library": "moment",
@@ -789,54 +789,54 @@
     },
     {
       "urls": [
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alife/theme-254/1.29.5/@alifd/next/1.24.18/theme.7c897c2.css",
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alifd/next/1.24.18/main.d839380.js"
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@alife/theme-254/1.29.5/@alifd/next/1.24.18/theme.7c897c2.css",
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@alifd/next/1.24.18/main.d839380.js"
       ],
       "library": "Next",
       "package": "@alifd/next",
       "id": "@alifd/next",
       "advancedUrls": {
         "default": [
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alife/theme-254/1.29.5/@alifd/next/1.24.18/theme.7c897c2.css",
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alifd/next/1.24.18/main.d839380.js"
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@alife/theme-254/1.29.5/@alifd/next/1.24.18/theme.7c897c2.css",
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@alifd/next/1.24.18/main.d839380.js"
         ]
       },
       "version": "1.24.18"
     },
     {
       "urls": [
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.adcade2.js",
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.cf7bbf0.js",
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.99ce7d1.css",
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.2aa120a.js",
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.99ce7d1.css"
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.adcade2.js",
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.cf7bbf0.js",
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.99ce7d1.css",
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.2aa120a.js",
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.99ce7d1.css"
       ],
       "library": "AliVcLccSlotRender",
       "package": "@ali/vc-lcc-slot-render",
       "id": "@ali/vc-lcc-slot-render",
       "advancedUrls": {
         "default": [
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.adcade2.js",
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.cf7bbf0.js",
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.99ce7d1.css",
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.2aa120a.js",
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.99ce7d1.css"
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.adcade2.js",
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.cf7bbf0.js",
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.99ce7d1.css",
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.2aa120a.js",
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@ali/vc-lcc-slot-render/1.0.1/view.mobile.rax.99ce7d1.css"
         ]
       },
       "version": "1.0.1"
     },
     {
       "urls": [
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.ce2c579.js",
-        "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.08a9a0f.css"
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.ce2c579.js",
+        "https://g.alicdn.com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.08a9a0f.css"
       ],
       "library": "AlilcLowcodeMaterials",
       "package": "@alilc/lowcode-materials",
       "id": "@alilc/lowcode-materials",
       "advancedUrls": {
         "default": [
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.ce2c579.js",
-          "vendor/g_alicdn_com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.08a9a0f.css"
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.ce2c579.js",
+          "https://g.alicdn.com/legao-comp/web_bundle_0724/@alilc/lowcode-materials/1.1.0/main.08a9a0f.css"
         ]
       },
       "version": "1.1.0"
