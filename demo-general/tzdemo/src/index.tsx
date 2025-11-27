@@ -13,7 +13,7 @@ const ExampleComponent = (props: ComponentProps, ref: any) => {
     <div ref={ref} className="ExampleComponent" {...others}>
       <h1>{title}</h1>
       {content || 'Hello ExampleComponent'}
-    </div>5
+    </div>
   );
 };
 
