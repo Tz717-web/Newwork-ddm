@@ -1,0 +1,25 @@
+{
+  "name": "demo-button-server",
+  "version": "1.0.0",
+  "description": "用于执行终端命令的后端服务器",
+  "main": "command-server.js",
+  "scripts": {
+    "start": "node command-server.js",
+    "dev": "nodemon command-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "command",
+    "execute",
+    "terminal",
+    "demo"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

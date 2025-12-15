@@ -169,10 +169,7 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
                             }}>
 
                                 <DemoButton
-                                    text="运行 Demo"
-                                    command=" npm run demo"
-                                    workingDirectory="D:\AAAImport-Work\Newwork-ddm\demo-general\src\plugins\lowcode-code-generator"
-                                    serverUrl="http://localhost:3001"
+                                    text="出码"
                                 />
 
                                 <button
