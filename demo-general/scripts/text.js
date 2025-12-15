@@ -60,7 +60,7 @@ const INITIAL_RESOURCES = [
     // "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.design.js",
     // "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.js",
     // "https://at.alicdn.com/t/font_2896595_33xhsbg9ux5.js",
-    "http://at.alicdn.com/t/a/font_2761185_ccl8ob63gmj.js",
+    //"http://at.alicdn.com/t/a/font_2761185_ccl8ob63gmj.js",
     //     "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.design.js",
     // "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.0.6/build/lowcode/meta.js",
     // "https://alifd.alicdn.com/npm/@alilc/lowcode-materials@1.1.0-beta.0/build/lowcode/meta.design.js",
