@@ -4,6 +4,15 @@ import { material, project } from '@alilc/lowcode-engine';
 import CodeGenerator from '@alilc/lowcode-code-generator';
 import DemoButton from '../../components/DemoButton';
 
+let exampleSchema: any = null;
+
+export { exampleSchema };
+
+/**
+ * 唐智测试插件
+ * @param ctx - 插件上下文对象，提供插件所需的各种API和工具
+ * @returns 返回插件配置对象，包含exports和init方法
+ */
 const TangZhiTest = (ctx: IPublicModelPluginContext) => {
     return {
         // 插件对外暴露的数据和方法
@@ -18,6 +27,9 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
         // 插件的初始化函数，在引擎初始化之后会立刻调用
         init() {
             // 初始化时自动更新并显示Schema
+            setTimeout(() => {
+                updateSchemaDisplay();
+            }, 1000);
 
 
             // 你可以拿到其他插件暴露的方法和属性
@@ -27,15 +39,30 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
             // console.log(options.name);
 
             // 自动更新并显示Schema的函数
-            const updateSchemaDisplay = () => {
+            const updateSchemaDisplay = async () => {
                 try {
                     const schema = project.exportSchema();
-                    // 将schema显示在面板中
+                    exampleSchema = schema;
+
+                    // 保存到 example-schema.json 文件
+                    try {
+                        await fetch('http://localhost:3001/api/save-schema', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                schema,
+                                filePath: 'd:\\AAAImport-Work\\Newwork-ddm\\demo-general\\src\\plugins\\plugin-test\\example-schema.json'
+                            })
+                        });
+                    } catch (e) {
+                        console.warn('保存到文件失败:', e);
+                    }
+
                     const schemaPanel = document.getElementById('schema-output');
                     if (schemaPanel) {
                         schemaPanel.textContent = JSON.stringify(schema, null, 2);
                     }
-                    ctx.logger.log('Schema显示更新成功！');
+                    ctx.logger.log('Schema显示更新成功并已保存！');
                 } catch (error) {
                     console.error('更新Schema显示失败:', error);
                     ctx.logger.error('更新Schema显示失败: ' + error);
@@ -152,6 +179,7 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
                 type: 'PanelDock',
                 props: {
                     description: 'Schema',
+
                 },
                 content: (
                     <div style={{ padding: '12px', width: '300px', height: '80vh', overflow: 'auto' }}>
@@ -163,14 +191,10 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
                             {/* 三列网格布局 */}
                             <div style={{
                                 display: 'grid',
-                                gridTemplateColumns: '1fr 1fr 1fr',
+                                gridTemplateColumns: '1fr 1fr',
                                 gap: '6px',
                                 marginBottom: '12px'
                             }}>
-
-                                <DemoButton
-                                    text="出码"
-                                />
 
                                 <button
                                     id="copy-button"
@@ -214,7 +238,7 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
                                         e.currentTarget.style.backgroundColor = '#fa541c';
                                     }}
                                 >
-                                    显示当前Schema
+                                    更新当前Schema
                                 </button>
                             </div>
 
@@ -229,6 +253,11 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
                             }}>
                                 💡 提示: 进入模块自动更新schema，点击导出选择保存目录
                             </div>
+                        </div>
+
+                        {/* 出码工具 */}
+                        <div style={{ marginBottom: '12px' }} onClick={updateSchemaDisplay}>
+                            <DemoButton />
                         </div>
 
                         <div style={{

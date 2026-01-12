@@ -2,34 +2,21 @@
   "version": "1.0.0",
   "componentsMap": [
     {
-      "package": "@alilc/lowcode-materials",
-      "version": "1.0.7",
-      "exportName": "Image",
-      "main": "",
-      "destructuring": true,
-      "subName": "",
-      "componentName": "Image"
-    },
-    {
       "devMode": "lowCode",
       "componentName": "Page"
-    },
-    {
-      "devMode": "lowCode",
-      "componentName": "LccMicx5dio"
     }
   ],
   "componentsTree": [
     {
       "componentName": "Page",
       "id": "node_dockcviv8fo1",
+      "docId": "doclaqkk3b9",
       "props": {
         "ref": "outerView",
         "style": {
           "height": "100%"
         }
       },
-      "docId": "doclaqkk3b9",
       "fileName": "/",
       "dataSource": {
         "list": [
@@ -104,44 +91,11 @@
         }
       },
       "originCode": "class LowcodeComponent extends Component {\n  state = {\n    \"text\": \"outer\",\n    \"isShowDialog\": false\n  }\n  componentDidMount() {\n    console.log('did mount');\n  }\n  componentWillUnmount() {\n    console.log('will unmount');\n  }\n  testFunc() {\n    console.log('test func');\n  }\n  onClick() {\n    this.setState({\n      isShowDialog: true\n    });\n  }\n  closeDialog() {\n    this.setState({\n      isShowDialog: false\n    });\n  }\n  getHelloWorldText() {\n    return this.i18n('i18n-jwg27yo4');\n  }\n  getHelloWorldText2() {\n    return this.i18n('i18n-jwg27yo3', {\n      name: '絮黎',\n    });\n  }\n  onTestConstantsButtonClicked() {\n    console.log('constants.ConstantA:', this.constants.ConstantA);\n    console.log('constants.ConstantB:', this.constants.ConstantB);\n\t}\n\tonTestUtilsButtonClicked(){\n    this.utils.demoUtil('param1', 'param2');\n\t}\n}",
-      "hidden": true,
+      "hidden": false,
       "title": "",
       "isLocked": false,
       "condition": true,
-      "conditionGroup": "",
-      "children": [
-        {
-          "componentName": "LccMicx5dio",
-          "id": "node_ocmj7fffia1",
-          "props": {
-            "propName": {
-              "type": "JSSlot",
-              "title": "propName",
-              "id": "node_ocmj7fffia2"
-            },
-            "content": ""
-          },
-          "hidden": false,
-          "title": "",
-          "isLocked": false,
-          "condition": true,
-          "conditionGroup": ""
-        },
-        {
-          "componentName": "Image",
-          "id": "node_ocmj6uj0i83",
-          "props": {
-            "src": "https://img.alicdn.com/tps/TB16TQvOXXXXXbiaFXXXXXXXXXX-120-120.svg",
-            "title": "",
-            "alt": ""
-          },
-          "title": "图片",
-          "hidden": false,
-          "isLocked": false,
-          "condition": true,
-          "conditionGroup": ""
-        }
-      ]
+      "conditionGroup": ""
     }
   ],
   "i18n": {

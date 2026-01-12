@@ -1,276 +1,735 @@
 {
-  version: '1.0.0',
-  componentsMap: [
+  "version": "1.0.0",
+  "componentsMap": [
     {
-      componentName: 'Button',
-      package: '@alifd/next',
-      version: '1.19.18',
-      destructuring: true,
-      exportName: 'Button',
+      "package": "@alilc/lowcode-materials",
+      "version": "1.0.7",
+      "exportName": "NextText",
+      "main": "lib/index.js",
+      "destructuring": true,
+      "subName": "",
+      "componentName": "NextText"
     },
     {
-      componentName: 'Button.Group',
-      package: '@alifd/next',
-      version: '1.19.18',
-      destructuring: true,
-      exportName: 'Button',
-      subName: 'Group',
+      "devMode": "lowCode",
+      "componentName": "FDP"
     },
     {
-      componentName: 'Input',
-      package: '@alifd/next',
-      version: '1.19.18',
-      destructuring: true,
-      exportName: 'Input',
+      "devMode": "lowCode",
+      "componentName": "FDCell"
     },
     {
-      componentName: 'Form',
-      package: '@alifd/next',
-      version: '1.19.18',
-      destructuring: true,
-      exportName: 'Form',
+      "devMode": "lowCode",
+      "componentName": "FDBlock"
     },
     {
-      componentName: 'Form.Item',
-      package: '@alifd/next',
-      version: '1.19.18',
-      destructuring: true,
-      exportName: 'Form',
-      subName: 'Item',
+      "package": "@alifd/next",
+      "version": "1.25.23",
+      "exportName": "Button",
+      "main": "",
+      "destructuring": true,
+      "subName": "",
+      "componentName": "Button"
     },
     {
-      componentName: 'NumberPicker',
-      package: '@alifd/next',
-      version: '1.19.18',
-      destructuring: true,
-      exportName: 'NumberPicker',
+      "devMode": "lowCode",
+      "componentName": "FDRow"
     },
     {
-      componentName: 'Select',
-      package: '@alifd/next',
-      version: '1.19.18',
-      destructuring: true,
-      exportName: 'Select',
+      "devMode": "lowCode",
+      "componentName": "FDSection"
     },
+    {
+      "devMode": "lowCode",
+      "componentName": "FDPage"
+    },
+    {
+      "devMode": "lowCode",
+      "componentName": "Page"
+    },
+    {
+      "devMode": "lowCode",
+      "componentName": "LccMicx5dio"
+    },
+    {
+      "package": "@alifd/next",
+      "version": "1.25.23",
+      "exportName": "Badge",
+      "main": "",
+      "destructuring": true,
+      "subName": "",
+      "componentName": "Badge"
+    },
+    {
+      "package": "@alifd/next",
+      "version": "1.25.23",
+      "exportName": "Avatar",
+      "main": "",
+      "destructuring": true,
+      "subName": "",
+      "componentName": "Avatar"
+    }
   ],
-  componentsTree: [
+  "componentsTree": [
     {
-      componentName: 'Page',
-      id: 'node$1',
-      meta: {
-        title: '测试',
-        router: '/',
+      "componentName": "Page",
+      "id": "node_dockcviv8fo1",
+      "docId": "doclaqkk3b9",
+      "props": {
+        "ref": "outerView",
+        "style": {
+          "height": "100%"
+        }
       },
-      props: {
-        ref: 'outerView',
-        autoLoading: true,
+      "fileName": "/",
+      "dataSource": {
+        "list": [
+          {
+            "type": "fetch",
+            "isInit": true,
+            "options": {
+              "params": {},
+              "method": "GET",
+              "isCors": true,
+              "timeout": 5000,
+              "headers": {},
+              "uri": "mock/info.json"
+            },
+            "id": "info",
+            "shouldFetch": {
+              "type": "JSFunction",
+              "value": "function() { \n  console.log('should fetch.....');\n  return true; \n}"
+            }
+          }
+        ]
       },
-      fileName: 'test',
-      state: {
-        text: 'outer',
-      },
-      lifeCycles: {
-        componentDidMount: {
-          type: 'JSFunction',
-          value: "function componentDidMount() { console.log('componentDidMount'); }",
+      "state": {
+        "text": {
+          "type": "JSExpression",
+          "value": "\"outer\""
         },
+        "isShowDialog": {
+          "type": "JSExpression",
+          "value": "false"
+        }
       },
-      dataSource: {
-        list: [
-          {
-            id: 'urlParams',
-            type: 'urlParams',
-          },
-
-          {
-            id: 'user',
-            type: 'fetch',
-            options: {
-              method: 'GET',
-              uri: 'https://shs.xxx.com/mock/1458/demo/user',
-              isSync: true,
-            },
-            dataHandler: {
-              type: 'JSFunction',
-              value: 'function (response) {\nif (!response.data.success){\n    throw new Error(response.data.message);\n  }\n  return response.data.data;\n}',
-            },
-          },
-
-          {
-            id: 'orders',
-            type: 'fetch',
-            options: {
-              method: 'GET',
-              uri: 'https://shs.xxx.com/mock/1458/demo/orders',
-              isSync: true,
-            },
-            dataHandler: {
-              type: 'JSFunction',
-              value: 'function (response) {\nif (!response.data.success){\n    throw new Error(response.data.message);\n  }\n  return response.data.data.result;\n}',
-            },
-          },
-        ],
-        dataHandler: {
-          type: 'JSFunction',
-          value: 'function (dataMap) {\n  console.info("All datasources loaded:", dataMap);\n}',
+      "css": "body {\n  font-size: 12px;\n}\n\n.button {\n  width: 100px;\n  color: #ff00ff\n}",
+      "lifeCycles": {
+        "componentDidMount": {
+          "type": "JSFunction",
+          "value": "function componentDidMount() {\n  console.log('did mount');\n}"
         },
+        "componentWillUnmount": {
+          "type": "JSFunction",
+          "value": "function componentWillUnmount() {\n  console.log('will unmount');\n}"
+        }
       },
-      children: [
+      "methods": {
+        "testFunc": {
+          "type": "JSFunction",
+          "value": "function testFunc() {\n  console.log('test func');\n}"
+        },
+        "onClick": {
+          "type": "JSFunction",
+          "value": "function onClick() {\n  this.setState({\n  isShowDialog: true\n  });\n}"
+        },
+        "closeDialog": {
+          "type": "JSFunction",
+          "value": "function closeDialog() {\n  this.setState({\n  isShowDialog: false\n  });\n}"
+        },
+        "getHelloWorldText": {
+          "type": "JSFunction",
+          "value": "function getHelloWorldText() {\n  return this.i18n('i18n-jwg27yo4');\n}"
+        },
+        "getHelloWorldText2": {
+          "type": "JSFunction",
+          "value": "function getHelloWorldText2() {\n  return this.i18n('i18n-jwg27yo3', {\n  name: '絮黎'\n  });\n}"
+        },
+        "onTestConstantsButtonClicked": {
+          "type": "JSFunction",
+          "value": "function onTestConstantsButtonClicked() {\n  console.log('constants.ConstantA:', this.constants.ConstantA);\n  console.log('constants.ConstantB:', this.constants.ConstantB);\n}"
+        },
+        "onTestUtilsButtonClicked": {
+          "type": "JSFunction",
+          "value": "function onTestUtilsButtonClicked() {\n  this.utils.demoUtil('param1', 'param2');\n}"
+        }
+      },
+      "originCode": "class LowcodeComponent extends Component {\n  state = {\n    \"text\": \"outer\",\n    \"isShowDialog\": false\n  }\n  componentDidMount() {\n    console.log('did mount');\n  }\n  componentWillUnmount() {\n    console.log('will unmount');\n  }\n  testFunc() {\n    console.log('test func');\n  }\n  onClick() {\n    this.setState({\n      isShowDialog: true\n    });\n  }\n  closeDialog() {\n    this.setState({\n      isShowDialog: false\n    });\n  }\n  getHelloWorldText() {\n    return this.i18n('i18n-jwg27yo4');\n  }\n  getHelloWorldText2() {\n    return this.i18n('i18n-jwg27yo3', {\n      name: '絮黎',\n    });\n  }\n  onTestConstantsButtonClicked() {\n    console.log('constants.ConstantA:', this.constants.ConstantA);\n    console.log('constants.ConstantB:', this.constants.ConstantB);\n\t}\n\tonTestUtilsButtonClicked(){\n    this.utils.demoUtil('param1', 'param2');\n\t}\n}",
+      "hidden": true,
+      "title": "",
+      "isLocked": false,
+      "condition": true,
+      "conditionGroup": "",
+      "children": [
         {
-          componentName: 'Form',
-          id: 'node$2',
-          props: {
-            labelCol: {
-              type: 'JSExpression',
-              value: 'this.state.colNum',
+          "componentName": "LccMicx5dio",
+          "id": "node_ocmj6i0gq91",
+          "docId": "docmj6i0gq9",
+          "props": {
+            "propName": {
+              "type": "JSSlot",
+              "value": {
+                "componentName": "Slot",
+                "id": "node_ocmj6i0gq92",
+                "docId": "docmj6i0gq9",
+                "props": {},
+                "title": "propName"
+              },
+              "id": "node_ocmj6i0gq92"
             },
-            style: {},
-            ref: 'testForm',
+            "content": ""
           },
-          children: [
-            {
-              componentName: 'Form.Item',
-              id: 'node$3',
-              props: {
-                label: '姓名：',
-                name: 'name',
-                initValue: '李雷',
-              },
-              children: [
-                {
-                  componentName: 'Input',
-                  id: 'node$4',
-                  props: {
-                    placeholder: '请输入',
-                    size: 'medium',
-                    style: {
-                      width: 320,
-                    },
-                  },
-                },
-              ],
-            },
-            {
-              componentName: 'Form.Item',
-              id: 'node$5',
-              props: {
-                label: '年龄：',
-                name: 'age',
-                initValue: '22',
-              },
-              children: [
-                {
-                  componentName: 'NumberPicker',
-                  id: 'node$6',
-                  props: {
-                    size: 'medium',
-                    type: 'normal',
-                  },
-                },
-              ],
-            },
-            {
-              componentName: 'Form.Item',
-              id: 'node$7',
-              props: {
-                label: '职业：',
-                name: 'profession',
-              },
-              children: [
-                {
-                  componentName: 'Select',
-                  id: 'node$8',
-                  props: {
-                    dataSource: [
-                      {
-                        label: '教师',
-                        value: 't',
-                      },
-                      {
-                        label: '医生',
-                        value: 'd',
-                      },
-                      {
-                        label: '歌手',
-                        value: 's',
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-            {
-              componentName: 'Div',
-              id: 'node$9',
-              props: {
-                style: {
-                  textAlign: 'center',
-                },
-              },
-              children: [
-                {
-                  componentName: 'Button.Group',
-                  id: 'node$a',
-                  props: {},
-                  children: [
-                    {
-                      componentName: 'Button',
-                      id: 'node$b',
-                      condition: {
-                        type: 'JSExpression',
-                        value: 'this.index >= 1',
-                      },
-                      loop: ['a', 'b', 'c'],
-                      props: {
-                        type: 'primary',
-                        style: {
-                          margin: '0 5px 0 5px',
-                        },
-                      },
-                      children: [
-                        {
-                          type: 'JSExpression',
-                          value: 'this.item',
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
+          "hidden": false,
+          "title": "",
+          "isLocked": false,
+          "condition": true,
+          "conditionGroup": ""
         },
-      ],
-    },
+        {
+          "componentName": "Badge",
+          "id": "node_ocmj6i0gq93",
+          "docId": "docmj6i0gq9",
+          "props": {
+            "prefix": "next-",
+            "showZero": true,
+            "dot": false
+          },
+          "hidden": false,
+          "title": "",
+          "isLocked": false,
+          "condition": true,
+          "conditionGroup": ""
+        },
+        {
+          "componentName": "Avatar",
+          "id": "node_ocmj6i0gq94",
+          "docId": "docmj6i0gq9",
+          "props": {
+            "prefix": "next-",
+            "size": "medium",
+            "shape": "circle",
+            "icon": "smile",
+            "children": "",
+            "src": ""
+          },
+          "hidden": false,
+          "title": "",
+          "isLocked": false,
+          "condition": true,
+          "conditionGroup": ""
+        },
+        {
+          "componentName": "FDPage",
+          "id": "node_oclfjpfqjy5",
+          "docId": "docmj6i0gq9",
+          "props": {
+            "contentProps": {
+              "style": {
+                "background": "rgba(255,255,255,0)"
+              }
+            },
+            "ref": "fdpage-bb43fbb0"
+          },
+          "title": "页面",
+          "hidden": true,
+          "isLocked": false,
+          "condition": true,
+          "conditionGroup": "",
+          "children": [
+            {
+              "componentName": "FDSection",
+              "id": "node_oclfjpfqjy6",
+              "docId": "docmj6i0gq9",
+              "props": {
+                "style": {
+                  "backgroundColor": "rgba(255,255,255,1)",
+                  "minHeight": ""
+                }
+              },
+              "title": "区域",
+              "hidden": true,
+              "isLocked": false,
+              "condition": true,
+              "conditionGroup": "",
+              "children": [
+                {
+                  "componentName": "FDBlock",
+                  "id": "node_oclfjpfqjy7",
+                  "docId": "docmj6i0gq9",
+                  "props": {
+                    "mode": "transparent",
+                    "span": 12
+                  },
+                  "title": "区块",
+                  "hidden": true,
+                  "isLocked": false,
+                  "condition": true,
+                  "conditionGroup": "",
+                  "children": [
+                    {
+                      "componentName": "FDCell",
+                      "id": "node_oclfjpfqjy8",
+                      "docId": "docmj6i0gq9",
+                      "props": {
+                        "align": "left",
+                        "verAlign": "top",
+                        "style": {
+                          "backgroundColor": "rgba(255,255,255,1)"
+                        },
+                        "width": ""
+                      },
+                      "title": "容器",
+                      "hidden": true,
+                      "isLocked": false,
+                      "condition": true,
+                      "conditionGroup": "",
+                      "children": [
+                        {
+                          "componentName": "FDP",
+                          "id": "node_oclfjpfqjy10",
+                          "docId": "docmj6i0gq9",
+                          "props": {},
+                          "title": "段落",
+                          "hidden": true,
+                          "isLocked": false,
+                          "condition": true,
+                          "conditionGroup": "",
+                          "children": [
+                            {
+                              "componentName": "NextText",
+                              "id": "node_oclfjpfqjyz",
+                              "docId": "docmj6i0gq9",
+                              "props": {
+                                "type": "h1",
+                                "children": "Home",
+                                "mark": false,
+                                "code": false,
+                                "delete": false,
+                                "underline": false,
+                                "strong": false,
+                                "prefix": "",
+                                "classname": "",
+                                "style": {
+                                  "fontSize": "25px"
+                                }
+                              },
+                              "hidden": true,
+                              "title": "",
+                              "isLocked": false,
+                              "condition": true,
+                              "conditionGroup": ""
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "FDBlock",
+                  "id": "node_oclfjpfqjy9",
+                  "docId": "docmj6i0gq9",
+                  "props": {
+                    "mode": "transparent",
+                    "span": 12,
+                    "style": {
+                      "backgroundColor": "rgba(255,255,255,1)",
+                      "minHeight": ""
+                    }
+                  },
+                  "title": "区块",
+                  "hidden": true,
+                  "isLocked": false,
+                  "condition": true,
+                  "conditionGroup": "",
+                  "children": [
+                    {
+                      "componentName": "FDRow",
+                      "id": "node_oclfjpfqjy11",
+                      "docId": "docmj6i0gq9",
+                      "props": {
+                        "style": {
+                          "backgroundColor": "rgba(255,255,255,1)"
+                        }
+                      },
+                      "title": "行容器",
+                      "hidden": true,
+                      "isLocked": false,
+                      "condition": true,
+                      "conditionGroup": "",
+                      "children": [
+                        {
+                          "componentName": "FDCell",
+                          "id": "node_oclfjpfqjya",
+                          "docId": "docmj6i0gq9",
+                          "props": {
+                            "align": "left",
+                            "verAlign": "top",
+                            "style": {
+                              "backgroundColor": "rgba(255,255,255,1)"
+                            },
+                            "width": ""
+                          },
+                          "title": "容器",
+                          "hidden": true,
+                          "isLocked": false,
+                          "condition": true,
+                          "conditionGroup": "",
+                          "children": [
+                            {
+                              "componentName": "FDP",
+                              "id": "node_oclfjqcdwn14",
+                              "docId": "docmj6i0gq9",
+                              "props": {},
+                              "title": "段落",
+                              "hidden": true,
+                              "isLocked": false,
+                              "condition": true,
+                              "conditionGroup": "",
+                              "children": [
+                                {
+                                  "componentName": "NextText",
+                                  "id": "node_oclfjqcdwn13",
+                                  "docId": "docmj6i0gq9",
+                                  "props": {
+                                    "type": "h5",
+                                    "children": "多语言展示",
+                                    "mark": false,
+                                    "code": false,
+                                    "delete": false,
+                                    "underline": false,
+                                    "strong": false,
+                                    "prefix": "",
+                                    "classname": "",
+                                    "style": {
+                                      "fontSize": "18px"
+                                    }
+                                  },
+                                  "hidden": true,
+                                  "title": "",
+                                  "isLocked": false,
+                                  "condition": true,
+                                  "conditionGroup": ""
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "FDP",
+                              "id": "node_oclfjqcdwn2k",
+                              "docId": "docmj6i0gq9",
+                              "props": {},
+                              "title": "段落",
+                              "hidden": true,
+                              "isLocked": false,
+                              "condition": true,
+                              "conditionGroup": "",
+                              "children": [
+                                {
+                                  "componentName": "NextText",
+                                  "id": "node_oclfjqcdwn2j",
+                                  "docId": "docmj6i0gq9",
+                                  "props": {
+                                    "type": "inherit",
+                                    "children": {
+                                      "type": "JSExpression",
+                                      "value": "this.getHelloWorldText()",
+                                      "mock": ""
+                                    },
+                                    "mark": false,
+                                    "code": false,
+                                    "delete": false,
+                                    "underline": false,
+                                    "strong": false,
+                                    "prefix": "",
+                                    "classname": ""
+                                  },
+                                  "hidden": true,
+                                  "title": "",
+                                  "isLocked": false,
+                                  "condition": true,
+                                  "conditionGroup": ""
+                                },
+                                {
+                                  "componentName": "NextText",
+                                  "id": "node_oclfjqcf7z15",
+                                  "docId": "docmj6i0gq9",
+                                  "props": {
+                                    "type": "inherit",
+                                    "children": {
+                                      "type": "JSExpression",
+                                      "value": "this.getHelloWorldText2()",
+                                      "mock": "基于 Ali-Lowcode-Engine 快速打造高生产力的低代码研发平台, 基于自然布局体系快速搭建页面"
+                                    },
+                                    "mark": false,
+                                    "code": false,
+                                    "delete": false,
+                                    "underline": false,
+                                    "strong": false,
+                                    "prefix": "",
+                                    "classname": ""
+                                  },
+                                  "hidden": true,
+                                  "title": "",
+                                  "isLocked": false,
+                                  "condition": true,
+                                  "conditionGroup": ""
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "FDCell",
+                          "id": "node_oclfjpfqjy12",
+                          "docId": "docmj6i0gq9",
+                          "props": {
+                            "align": "left",
+                            "verAlign": "top",
+                            "style": {
+                              "backgroundColor": "rgba(255,255,255,1)"
+                            }
+                          },
+                          "title": "容器",
+                          "hidden": true,
+                          "isLocked": false,
+                          "condition": true,
+                          "conditionGroup": "",
+                          "children": [
+                            {
+                              "componentName": "FDP",
+                              "id": "node_oclfjqcf7z2h",
+                              "docId": "docmj6i0gq9",
+                              "props": {},
+                              "title": "段落",
+                              "hidden": true,
+                              "isLocked": false,
+                              "condition": true,
+                              "conditionGroup": "",
+                              "children": [
+                                {
+                                  "componentName": "NextText",
+                                  "id": "node_oclfjqcf7z2g",
+                                  "docId": "docmj6i0gq9",
+                                  "props": {
+                                    "type": "h5",
+                                    "children": "交互展示",
+                                    "mark": false,
+                                    "code": false,
+                                    "delete": false,
+                                    "underline": false,
+                                    "strong": false,
+                                    "prefix": "",
+                                    "classname": "",
+                                    "style": {
+                                      "fontSize": "18px"
+                                    }
+                                  },
+                                  "hidden": true,
+                                  "title": "",
+                                  "isLocked": false,
+                                  "condition": true,
+                                  "conditionGroup": ""
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "FDP",
+                              "id": "node_oclfjqcf7z2l",
+                              "docId": "docmj6i0gq9",
+                              "props": {},
+                              "title": "段落",
+                              "hidden": true,
+                              "isLocked": false,
+                              "condition": true,
+                              "conditionGroup": "",
+                              "children": [
+                                {
+                                  "componentName": "Button",
+                                  "id": "node_oclfjqcf7z2k",
+                                  "docId": "doclawu71ac",
+                                  "props": {
+                                    "prefix": "next-",
+                                    "type": "primary",
+                                    "size": "medium",
+                                    "htmlType": "button",
+                                    "component": "button",
+                                    "children": "constants",
+                                    "iconSize": "xxs",
+                                    "loading": false,
+                                    "text": false,
+                                    "warning": false,
+                                    "disabled": false,
+                                    "ref": "button-4951c2d3",
+                                    "__events": {
+                                      "eventDataList": [
+                                        {
+                                          "type": "componentEvent",
+                                          "name": "onClick",
+                                          "relatedEventName": "onTestConstantsButtonClicked"
+                                        }
+                                      ],
+                                      "eventList": [
+                                        {
+                                          "name": "onClick",
+                                          "description": "点击按钮的回调\n@param {Object} e Event Object",
+                                          "disabled": true
+                                        },
+                                        {
+                                          "name": "onMouseUp",
+                                          "disabled": false
+                                        }
+                                      ]
+                                    },
+                                    "onClick": {
+                                      "type": "JSFunction",
+                                      "value": "function(){this.onTestConstantsButtonClicked.apply(this,Array.prototype.slice.call(arguments).concat([])) }"
+                                    }
+                                  },
+                                  "hidden": true,
+                                  "title": "",
+                                  "isLocked": false,
+                                  "condition": true,
+                                  "conditionGroup": ""
+                                },
+                                {
+                                  "componentName": "Button",
+                                  "id": "node_oclfjqcf7z2o",
+                                  "docId": "doclawu71ac",
+                                  "props": {
+                                    "prefix": "next-",
+                                    "type": "primary",
+                                    "size": "medium",
+                                    "htmlType": "button",
+                                    "component": "button",
+                                    "children": "utils",
+                                    "iconSize": "xxs",
+                                    "loading": false,
+                                    "text": false,
+                                    "warning": false,
+                                    "disabled": false,
+                                    "__events": {
+                                      "eventDataList": [
+                                        {
+                                          "type": "componentEvent",
+                                          "name": "onClick",
+                                          "relatedEventName": "onTestUtilsButtonClicked"
+                                        }
+                                      ],
+                                      "eventList": [
+                                        {
+                                          "name": "onClick",
+                                          "description": "点击按钮的回调\n@param {Object} e Event Object",
+                                          "disabled": true
+                                        },
+                                        {
+                                          "name": "onMouseUp",
+                                          "disabled": false
+                                        }
+                                      ]
+                                    },
+                                    "onClick": {
+                                      "type": "JSFunction",
+                                      "value": "function(){this.onTestUtilsButtonClicked.apply(this,Array.prototype.slice.call(arguments).concat([])) }"
+                                    }
+                                  },
+                                  "hidden": true,
+                                  "title": "",
+                                  "isLocked": false,
+                                  "condition": true,
+                                  "conditionGroup": ""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "FDBlock",
+                  "id": "node_oclfjqcf7z3g",
+                  "docId": "docmj6i0gq9",
+                  "props": {
+                    "mode": "transparent",
+                    "span": 12,
+                    "style": {
+                      "backgroundColor": "rgba(255,255,255,1)",
+                      "minHeight": ""
+                    }
+                  },
+                  "title": "区块",
+                  "hidden": true,
+                  "isLocked": false,
+                  "condition": true,
+                  "conditionGroup": "",
+                  "children": [
+                    {
+                      "componentName": "FDCell",
+                      "id": "node_oclfjqcf7z3h",
+                      "docId": "docmj6i0gq9",
+                      "props": {
+                        "align": "left",
+                        "verAlign": "top",
+                        "style": {
+                          "backgroundColor": "rgba(255,255,255,1)"
+                        }
+                      },
+                      "title": "容器",
+                      "hidden": true,
+                      "isLocked": false,
+                      "condition": true,
+                      "conditionGroup": "",
+                      "children": [
+                        {
+                          "componentName": "FDP",
+                          "id": "node_oclfjqcf7z43",
+                          "docId": "docmj6i0gq9",
+                          "props": {},
+                          "title": "段落",
+                          "hidden": true,
+                          "isLocked": false,
+                          "condition": true,
+                          "conditionGroup": "",
+                          "children": [
+                            {
+                              "componentName": "NextText",
+                              "id": "node_oclfjqcf7z42",
+                              "docId": "docmj6i0gq9",
+                              "props": {
+                                "type": "inherit",
+                                "children": "Powered By Lowcode Engine",
+                                "mark": false,
+                                "code": false,
+                                "delete": false,
+                                "underline": false,
+                                "strong": false,
+                                "prefix": "",
+                                "classname": "",
+                                "style": {
+                                  "height": "30px",
+                                  "lineHeight": "30px",
+                                  "fontSize": "20px"
+                                }
+                              },
+                              "hidden": true,
+                              "title": "",
+                              "isLocked": false,
+                              "condition": true,
+                              "conditionGroup": ""
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   ],
-  constants: {
-    ENV: 'prod',
-    DOMAIN: 'xxx.xxx.com',
-  },
-  css: 'body {font-size: 12px;} .table { width: 100px;}',
-  config: {
-    sdkVersion: '1.0.3',
-    historyMode: 'hash',
-    targetRootID: 'J_Container',
-    layout: {
-      componentName: 'BasicLayout',
-      props: {
-        logo: '...',
-        name: '测试网站',
-      },
-    },
-    theme: {
-      package: '@alife/theme-fusion',
-      version: '^0.1.0',
-      primary: '#ff9966',
-    },
-  },
-  meta: {
-    name: 'demo应用',
-    git_group: 'appGroup',
-    project_name: 'app_demo',
-    description: '这是一个测试应用',
-    spma: 'spa23d',
-    creator: 'Test',
-  },
+  "i18n": {}
 }

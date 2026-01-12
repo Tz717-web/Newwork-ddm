@@ -141,7 +141,6 @@ class $$Page extends React.Component {
         ref={this._refsManager.linkRef('outerView')}
         style={{ height: '100%' }}
       >
-        <LccMicx5dio propName={null} content="" />
         <Image
           src="https://img.alicdn.com/tps/TB16TQvOXXXXXbiaFXXXXXXXXXX-120-120.svg"
           title=""

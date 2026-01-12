@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button, message, Modal, Space, Typography, Card } from 'antd';
-import { PlayCircleOutlined, CloudServerOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { Button, message, Modal, Space, Typography, Card, Input } from 'antd';
+import { PlayCircleOutlined, CloudServerOutlined, InfoCircleOutlined, FolderOpenOutlined } from '@ant-design/icons';
 
 const { Text, Paragraph } = Typography;
 
@@ -29,9 +29,9 @@ interface DemoButtonProps {
  * @returns React组件
  */
 const DemoButton: React.FC<DemoButtonProps> = ({
-    text = '运行 Demo',
-    command = 'npm run demo',
-    workingDirectory = 'd:\\AAAImport-Work\\Newwork-ddm\\demo-general',
+    text = '出码',
+    command = 'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema.json -o D:/locd-Demo -s icejs',
+    workingDirectory = 'd:\\AAAImport-Work\\Newwork-ddm\\demo-general\\src\\plugins\\lowcode-code-generator',
     serverUrl = 'http://localhost:3001'
 }) => {
     const [loading, setLoading] = useState(false);
@@ -155,11 +155,8 @@ const DemoButton: React.FC<DemoButtonProps> = ({
                 <Space direction="vertical" style={{ width: '100%' }} size="middle">
                     <div style={{ textAlign: 'center' }}>
                         <CloudServerOutlined style={{ fontSize: '24px', color: '#1890ff' }} />
-                        <Typography.Title level={3} style={{ margin: '16px 0 8px 0' }}>
-                            Demo 命令执行器
-                        </Typography.Title>
                         <Paragraph type="secondary">
-                            点击按钮执行指定的终端命令
+                            默认出码地址D:/locd-Demo
                         </Paragraph>
                     </div>
 
@@ -168,14 +165,6 @@ const DemoButton: React.FC<DemoButtonProps> = ({
                             <div>
                                 <Text strong>服务器状态: </Text>
                                 {getServerStatusDisplay()}
-                            </div>
-                            <div>
-                                <Text strong>当前命令: </Text>
-                                <Text code>{command}</Text>
-                            </div>
-                            <div>
-                                <Text strong>工作目录: </Text>
-                                <Text code style={{ fontSize: '12px' }}>{workingDirectory}</Text>
                             </div>
                         </Space>
                     </div>

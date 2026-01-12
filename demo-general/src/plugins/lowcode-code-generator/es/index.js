@@ -1,5 +1,4 @@
 var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
   get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
 }) : x)(function(x) {
@@ -10,10 +9,6 @@ var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
 };
 
 // src/parser/SchemaParser.ts
@@ -66,7 +61,6 @@ var DependencyType = /* @__PURE__ */ ((DependencyType2) => {
 var CodeGeneratorError = class extends Error {
   constructor(message, detail) {
     super(message);
-    __publicField(this, "detail");
     this.name = this.constructor.name;
     this.detail = detail;
     Object.setPrototypeOf(this, new.target.prototype);
@@ -981,7 +975,6 @@ var groupChunks = (chunks) => {
 };
 var ChunkBuilder = class {
   constructor(plugins4 = []) {
-    __publicField(this, "plugins");
     this.plugins = plugins4;
   }
   async run(ir, initialStructure = {
@@ -1014,11 +1007,11 @@ var ChunkBuilder = class {
 // src/generator/CodeBuilder.ts
 var CodeBuilder = class {
   constructor(chunkDefinitions = []) {
-    __publicField(this, "chunkDefinitions", []);
-    __publicField(this, "generators", {
+    this.chunkDefinitions = [];
+    this.generators = {
       ["string" /* STRING */]: (str) => str,
       ["json" /* JSON */]: (json) => JSON.stringify(json)
-    });
+    };
     this.chunkDefinitions = chunkDefinitions;
   }
   link(chunkDefinitions = []) {
@@ -1161,14 +1154,6 @@ function createModuleBuilder(options = {
 // src/generator/ProjectBuilder.ts
 var ProjectBuilder = class {
   constructor(builderOptions) {
-    __publicField(this, "template");
-    __publicField(this, "plugins");
-    __publicField(this, "postProcessors");
-    __publicField(this, "schemaParser");
-    __publicField(this, "projectPreProcessors");
-    __publicField(this, "projectPostProcessors");
-    __publicField(this, "inStrictMode");
-    __publicField(this, "extraContextData");
     let customBuilderOptions = builderOptions;
     if (typeof builderOptions.customizeBuilderOptions === "function") {
       customBuilderOptions = builderOptions.customizeBuilderOptions(builderOptions);
@@ -2125,8 +2110,8 @@ import { isIdentifier } from "@babel/types";
 // src/utils/OrderedSet.ts
 var OrderedSet = class {
   constructor(items) {
-    __publicField(this, "_set", /* @__PURE__ */ new Set());
-    __publicField(this, "_arr", []);
+    this._set = /* @__PURE__ */ new Set();
+    this._arr = [];
     if (items) {
       this._set = new Set(items);
       this._arr = items.slice(0);
@@ -2156,8 +2141,6 @@ var OrderedSet = class {
 var ParseError = class extends Error {
   constructor(expr, detail) {
     super(`Failed to parse expression "${typeof expr === "string" ? expr : generate(expr)}"`);
-    __publicField(this, "expr");
-    __publicField(this, "detail");
     this.expr = expr;
     this.detail = detail;
     Object.setPrototypeOf(this, new.target.prototype);
@@ -2799,8 +2782,7 @@ __export(Scope_exports, {
 // src/utils/ScopeBindings.ts
 var ScopeBindings = class {
   constructor(p = null) {
-    __publicField(this, "parent");
-    __publicField(this, "_bindings", new OrderedSet());
+    this._bindings = new OrderedSet();
     this.parent = p;
   }
   hasBinding(varName) {
@@ -2834,7 +2816,6 @@ var ScopeBindings = class {
 var Scope = class {
   constructor(parent = null) {
     this.parent = parent;
-    __publicField(this, "bindings");
     this.bindings = void 0;
   }
   static createRootScope() {

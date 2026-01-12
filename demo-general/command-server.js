@@ -13,6 +13,33 @@ app.use(express.json());
 // 静态文件服务
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 保存Schema到文件
+app.post('/api/save-schema', (req, res) => {
+  const { schema, filePath } = req.body;
+
+  if (!schema) {
+    return res.status(400).json({ error: 'Schema数据不能为空' });
+  }
+
+  const targetPath = filePath || path.join(__dirname, 'src', 'plugins', 'plugin-test', 'example-schema.json');
+
+  try {
+    const fs = require('fs');
+    fs.writeFileSync(targetPath, JSON.stringify(schema, null, 2), { encoding: 'utf-8' });
+    res.json({
+      success: true,
+      message: 'Schema保存成功',
+      filePath: targetPath
+    });
+  } catch (error) {
+    console.error('保存Schema失败:', error);
+    res.status(500).json({
+      error: '保存Schema失败',
+      message: error.message
+    });
+  }
+});
+
 /**
  * 执行终端命令的API端点
  * POST /api/execute-command
@@ -27,7 +54,7 @@ app.post('/api/execute-command', (req, res) => {
 
   // 安全检查 - 限制可执行的命令
   const allowedCommands = [
-    'node demo',
+    'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema.json -o D:/locd-Demo -s icejs',
     'node --version',
     'npm start',
     'npm run build',
@@ -88,7 +115,7 @@ app.get('/api/project-info', (req, res) => {
     name: 'LowCode Demo',
     description: '低代码引擎 Demo 项目',
     availableCommands: [
-      'node demo',
+      'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema.json -o D:/locd-Demo -s icejs',
       'node --version',
       'npm start',
       'npm run build',
