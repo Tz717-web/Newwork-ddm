@@ -35,6 +35,7 @@ const SamplePreview = () => {
       dataSource: projectDataSource,
     } = projectSchema;
     const componentsMap: any = {};
+    console.log(componentsMapArray, 'componentsMapArray');
     componentsMapArray.forEach((component: any) => {
       componentsMap[component.componentName] = component;
     });
@@ -56,7 +57,7 @@ const SamplePreview = () => {
     // TODO asset may cause pollution
     const assetLoader = new AssetLoader();
     await assetLoader.load(libraryAsset);
-    
+
     // injectComponents 的使用一般在开发环境做调试注入使用（详细见文档），一般纯净的预览环境是不依赖此插件（即预览渲染态理论上是不需要依赖任何引擎及其相关的插件等资源，PS: 一些 utils 和 types 忽略）
     // The use of injectComponents is generally used for debugging and injection in the development environment (see the documentation for details). The generally destroyed preview environment does not rely on this plug-in.
     // const components = await injectComponents(buildComponents(libraryMap, componentsMap));

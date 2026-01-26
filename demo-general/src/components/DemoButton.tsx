@@ -30,7 +30,7 @@ interface DemoButtonProps {
  */
 const DemoButton: React.FC<DemoButtonProps> = ({
     text = '出码',
-    command = 'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema.json -o D:/locd-Demo -s icejs',
+    command = 'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema-lowcode.json -o D:/locd-Demo-pro -s icejs',
     workingDirectory = 'd:\\AAAImport-Work\\Newwork-ddm\\demo-general\\src\\plugins\\lowcode-code-generator',
     serverUrl = 'http://localhost:3001'
 }) => {
@@ -156,7 +156,7 @@ const DemoButton: React.FC<DemoButtonProps> = ({
                     <div style={{ textAlign: 'center' }}>
                         <CloudServerOutlined style={{ fontSize: '24px', color: '#1890ff' }} />
                         <Paragraph type="secondary">
-                            默认出码地址D:/locd-Demo
+                            默认出码地址D:/locd-Demo-pro
                         </Paragraph>
                     </div>
 

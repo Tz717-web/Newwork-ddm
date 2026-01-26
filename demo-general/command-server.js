@@ -54,7 +54,7 @@ app.post('/api/execute-command', (req, res) => {
 
   // 安全检查 - 限制可执行的命令
   const allowedCommands = [
-    'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema.json -o D:/locd-Demo -s icejs',
+    'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema-lowcode.json -o D:/locd-Demo-pro -s icejs',
     'node --version',
     'npm start',
     'npm run build',
@@ -115,7 +115,7 @@ app.get('/api/project-info', (req, res) => {
     name: 'LowCode Demo',
     description: '低代码引擎 Demo 项目',
     availableCommands: [
-      'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema.json -o D:/locd-Demo -s icejs',
+      'node bin/lowcode-code-generator.js -i ../plugin-test/example-schema-lowcode.json -o D:/locd-Demo-pro -s icejs',
       'node --version',
       'npm start',
       'npm run build',

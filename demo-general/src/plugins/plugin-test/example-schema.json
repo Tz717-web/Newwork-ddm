@@ -6,21 +6,26 @@
       "componentName": "Page"
     },
     {
-      "devMode": "lowCode",
-      "componentName": "LccMi5blx3p"
+      "package": "@alifd/next",
+      "version": "1.25.23",
+      "exportName": "Message",
+      "main": "",
+      "destructuring": true,
+      "subName": "",
+      "componentName": "Message"
     }
   ],
   "componentsTree": [
     {
       "componentName": "Page",
       "id": "node_dockcviv8fo1",
-      "docId": "doclaqkk3b9",
       "props": {
         "ref": "outerView",
         "style": {
           "height": "100%"
         }
       },
+      "docId": "doclaqkk3b9",
       "fileName": "/",
       "dataSource": {
         "list": [
@@ -57,50 +62,41 @@
       "lifeCycles": {
         "componentDidMount": {
           "type": "JSFunction",
-          "value": "function componentDidMount() {\n  console.log('did mount');\n}",
-          "source": "function componentDidMount() {\n  console.log('did mount');\n}"
+          "value": "function componentDidMount() {\n  console.log('did mount');\n}"
         },
         "componentWillUnmount": {
           "type": "JSFunction",
-          "value": "function componentWillUnmount() {\n  console.log('will unmount');\n}",
-          "source": "function componentWillUnmount() {\n  console.log('will unmount');\n}"
+          "value": "function componentWillUnmount() {\n  console.log('will unmount');\n}"
         }
       },
       "methods": {
         "testFunc": {
           "type": "JSFunction",
-          "value": "function testFunc() {\n  console.log('test func');\n}",
-          "source": "function testFunc() {\n  console.log('test func');\n}"
+          "value": "function testFunc() {\n  console.log('test func');\n}"
         },
         "onClick": {
           "type": "JSFunction",
-          "value": "function onClick() {\n  this.setState({\n    isShowDialog: true\n  });\n}",
-          "source": "function onClick() {\n  this.setState({\n    isShowDialog: true\n  });\n}"
+          "value": "function onClick() {\n  this.setState({\n  isShowDialog: true\n  });\n}"
         },
         "closeDialog": {
           "type": "JSFunction",
-          "value": "function closeDialog() {\n  this.setState({\n    isShowDialog: false\n  });\n}",
-          "source": "function closeDialog() {\n  this.setState({\n    isShowDialog: false\n  });\n}"
+          "value": "function closeDialog() {\n  this.setState({\n  isShowDialog: false\n  });\n}"
         },
         "getHelloWorldText": {
           "type": "JSFunction",
-          "value": "function getHelloWorldText() {\n  return this.i18n('i18n-jwg27yo4');\n}",
-          "source": "function getHelloWorldText() {\n  return this.i18n('i18n-jwg27yo4');\n}"
+          "value": "function getHelloWorldText() {\n  return this.i18n('i18n-jwg27yo4');\n}"
         },
         "getHelloWorldText2": {
           "type": "JSFunction",
-          "value": "function getHelloWorldText2() {\n  return this.i18n('i18n-jwg27yo3', {\n    name: '絮黎'\n  });\n}",
-          "source": "function getHelloWorldText2() {\n  return this.i18n('i18n-jwg27yo3', {\n    name: '絮黎'\n  });\n}"
+          "value": "function getHelloWorldText2() {\n  return this.i18n('i18n-jwg27yo3', {\n  name: '絮黎'\n  });\n}"
         },
         "onTestConstantsButtonClicked": {
           "type": "JSFunction",
-          "value": "function onTestConstantsButtonClicked() {\n  console.log('constants.ConstantA:', this.constants.ConstantA);\n  console.log('constants.ConstantB:', this.constants.ConstantB);\n}",
-          "source": "function onTestConstantsButtonClicked() {\n  console.log('constants.ConstantA:', this.constants.ConstantA);\n  console.log('constants.ConstantB:', this.constants.ConstantB);\n}"
+          "value": "function onTestConstantsButtonClicked() {\n  console.log('constants.ConstantA:', this.constants.ConstantA);\n  console.log('constants.ConstantB:', this.constants.ConstantB);\n}"
         },
         "onTestUtilsButtonClicked": {
           "type": "JSFunction",
-          "value": "function onTestUtilsButtonClicked() {\n  this.utils.demoUtil('param1', 'param2');\n}",
-          "source": "function onTestUtilsButtonClicked() {\n  this.utils.demoUtil('param1', 'param2');\n}"
+          "value": "function onTestUtilsButtonClicked() {\n  this.utils.demoUtil('param1', 'param2');\n}"
         }
       },
       "originCode": "class LowcodeComponent extends Component {\n  state = {\n    \"text\": \"outer\",\n    \"isShowDialog\": false\n  }\n  componentDidMount() {\n    console.log('did mount');\n  }\n  componentWillUnmount() {\n    console.log('will unmount');\n  }\n  testFunc() {\n    console.log('test func');\n  }\n  onClick() {\n    this.setState({\n      isShowDialog: true\n    });\n  }\n  closeDialog() {\n    this.setState({\n      isShowDialog: false\n    });\n  }\n  getHelloWorldText() {\n    return this.i18n('i18n-jwg27yo4');\n  }\n  getHelloWorldText2() {\n    return this.i18n('i18n-jwg27yo3', {\n      name: '絮黎',\n    });\n  }\n  onTestConstantsButtonClicked() {\n    console.log('constants.ConstantA:', this.constants.ConstantA);\n    console.log('constants.ConstantB:', this.constants.ConstantB);\n\t}\n\tonTestUtilsButtonClicked(){\n    this.utils.demoUtil('param1', 'param2');\n\t}\n}",
@@ -111,22 +107,17 @@
       "conditionGroup": "",
       "children": [
         {
-          "componentName": "LccMi5blx3p",
-          "id": "node_ocmknrxcf03",
-          "docId": "docmknrxcf0",
+          "componentName": "Message",
+          "id": "node_ocmkvejt2g3",
           "props": {
-            "propName": {
-              "type": "JSSlot",
-              "value": {
-                "componentName": "Slot",
-                "id": "node_ocmknrxcf04",
-                "docId": "docmknrxcf0",
-                "props": {},
-                "title": "propName"
-              },
-              "id": "node_ocmknrxcf04"
-            },
-            "content": ""
+            "title": "Alert",
+            "type": "warning",
+            "shape": "inline",
+            "size": "medium",
+            "visible": true,
+            "animation": true,
+            "children": "This item already has the label \"travel\", you can add a new label.",
+            "closeable": false
           },
           "hidden": false,
           "title": "",

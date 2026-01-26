@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { IPublicModelPluginContext } from '@alilc/lowcode-types';
+import { IPublicEnumTransformStage, IPublicModelPluginContext } from '@alilc/lowcode-types';
 import { material, project } from '@alilc/lowcode-engine';
 import CodeGenerator from '@alilc/lowcode-code-generator';
 import DemoButton from '../../components/DemoButton';
+import asserts from '../../services/assets.json';
+
 
 let exampleSchema: any = null;
 
@@ -41,7 +43,7 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
             // 自动更新并显示Schema的函数
             const updateSchemaDisplay = async () => {
                 try {
-                    const schema = project.exportSchema();
+                    const schema = project.exportSchema(IPublicEnumTransformStage.Save);
                     exampleSchema = schema;
 
                     // 保存到 example-schema.json 文件
@@ -83,7 +85,7 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
             // 导出Schema为JSON文件（选择保存目录）
             const exportSchema = async () => {
                 try {
-                    const schema = project.exportSchema();
+                    const schema = project.exportSchema(IPublicEnumTransformStage.Render);
                     const dataStr = JSON.stringify(schema, null, 2);
                     const fileName = `schema-${new Date().toISOString().split('T')[0]}.json`;
 
