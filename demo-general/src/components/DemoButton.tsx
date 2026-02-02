@@ -76,7 +76,30 @@ const DemoButton: React.FC<DemoButtonProps> = ({
         setOutput('');
 
         try {
-            const response = await fetch(`${serverUrl}/api/execute-command`, {
+            // 第一步：执行 replace-components.js 脚本
+            console.log('🔄 开始执行组件替换脚本...');
+            const replaceResponse = await fetch(`${serverUrl}/api/execute-command`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    command: 'node replace-components.js',
+                    workingDirectory: 'd:\\AAAImport-Work\\Newwork-ddm\\demo-general'
+                })
+            });
+
+            const replaceResult = await replaceResponse.json();
+
+            if (!replaceResponse.ok || !replaceResult.success) {
+                throw new Error(replaceResult.error || '组件替换脚本执行失败');
+            }
+
+            console.log('✅ 组件替换脚本执行成功');
+
+            // 第二步：执行出码命令
+            console.log('🚀 开始执行出码命令...');
+            const codegenResponse = await fetch(`${serverUrl}/api/execute-command`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,14 +110,14 @@ const DemoButton: React.FC<DemoButtonProps> = ({
                 })
             });
 
-            const result = await response.json();
+            const codegenResult = await codegenResponse.json();
 
-            if (response.ok && result.success) {
-                setOutput(`✅ 命令执行成功!\n\n📝 执行命令: ${result.command}\n📁 工作目录: ${result.workingDirectory}\n\n📄 输出结果:\n${result.output}`);
-                message.success('命令执行完成！');
+            if (codegenResponse.ok && codegenResult.success) {
+                setOutput(`✅ 命令执行成功!\n\n📝 第一步 - 组件替换:\n${replaceResult.output}\n\n📄 第二步 - 出码:\n📝 执行命令: ${codegenResult.command}\n📁 工作目录: ${codegenResult.workingDirectory}\n\n📄 输出结果:\n${codegenResult.output}`);
+                message.success('出码执行完成！');
                 setIsModalVisible(true);
             } else {
-                throw new Error(result.error || '命令执行失败');
+                throw new Error(codegenResult.error || '出码命令执行失败');
             }
 
         } catch (error) {

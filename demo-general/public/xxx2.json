@@ -1,6 +1,6 @@
 [
     {
-        "componentId": "LCC-DGGBYFU0TM",
+        "componentId": "LCC-SEE8SSKUX5",
         "icon": "",
         "experimental": {
             "initials": [
@@ -95,14 +95,14 @@
         "tags": "",
         "reference": {
             "destructuring": false,
-            "id": "LCC-DGGBYFU0TM",
+            "id": "LCC-SEE8SSKUX5",
             "version": "0.1.0"
         },
         "devMode": "lowcode",
         "snippets": [
             {
                 "schema": {
-                    "componentName": "Lccjao2tvjh6",
+                    "componentName": "Lcc0ay1w7u92",
                     "props": {
                         "propName": {
                             "type": "JSSlot",
@@ -116,7 +116,7 @@
             }
         ],
         "docUrl": "",
-        "componentName": "Lccjao2tvjh6"
+        "componentName": "Lcc0ay1w7u92"
     },
     {
         "schema": {
@@ -211,47 +211,17 @@
             "condition": true,
             "children": [
                 {
-                    "componentName": "Search",
-                    "id": "node_ocmkve9fswa",
+                    "componentName": "Form",
+                    "id": "node_ocmkysu82w3",
                     "props": {
-                        "dataSource": [
-                            {
-                                "label": "Recent",
-                                "value": "Recent"
-                            },
-                            {
-                                "label": "dress",
-                                "value": "dress"
-                            },
-                            {
-                                "label": "sunglasses",
-                                "value": "sunglasses"
-                            },
-                            {
-                                "label": "t-shirt",
-                                "value": "t-shirt"
-                            }
-                        ],
-                        "followTrigger": true,
-                        "searchText": "搜索",
-                        "prefix": "next-",
-                        "shape": "normal",
-                        "type": "normal",
-                        "size": "medium",
-                        "hasIcon": true,
-                        "hasClear": false,
-                        "disabled": false
+                        "labelCol": {
+                            "span": 2
+                        },
+                        "wrapperCol": {
+                            "span": 14
+                        },
+                        "labelAlign": "left"
                     },
-                    "hidden": false,
-                    "title": "",
-                    "isLocked": false,
-                    "condition": true,
-                    "conditionGroup": ""
-                },
-                {
-                    "componentName": "Button.Group",
-                    "id": "node_ocmkve9fsw5",
-                    "props": {},
                     "hidden": false,
                     "title": "",
                     "isLocked": false,
@@ -259,15 +229,11 @@
                     "conditionGroup": "",
                     "children": [
                         {
-                            "componentName": "Button",
-                            "id": "node_ocmkve9fsw6",
+                            "componentName": "Form.Item",
+                            "id": "node_ocmkysu82w4",
                             "props": {
-                                "type": "primary",
-                                "style": {
-                                    "margin": "0 5px 0 5px"
-                                },
-                                "htmlType": "submit",
-                                "children": "提交"
+                                "label": "Email: ",
+                                "required": true
                             },
                             "hidden": false,
                             "title": "",
@@ -276,10 +242,12 @@
                             "conditionGroup": "",
                             "children": [
                                 {
-                                    "componentName": "Icon",
-                                    "id": "node_ocmkve9fsw7",
+                                    "componentName": "Input",
+                                    "id": "node_ocmkysu82w5",
                                     "props": {
-                                        "type": "success"
+                                        "name": "email",
+                                        "size": "medium",
+                                        "placeholder": "用户名"
                                     },
                                     "hidden": false,
                                     "title": "",
@@ -290,37 +258,100 @@
                             ]
                         },
                         {
-                            "componentName": "Button",
-                            "id": "node_ocmkve9fsw8",
+                            "componentName": "Form.Item",
+                            "id": "node_ocmkysu82w6",
                             "props": {
-                                "type": "normal",
-                                "style": {
-                                    "margin": "0 5px 0 5px"
-                                },
-                                "htmlType": "reset",
-                                "children": "重置"
+                                "label": "Password: ",
+                                "required": true
                             },
                             "hidden": false,
                             "title": "",
                             "isLocked": false,
                             "condition": true,
-                            "conditionGroup": ""
+                            "conditionGroup": "",
+                            "children": [
+                                {
+                                    "componentName": "Input.Password",
+                                    "id": "node_ocmkysu82w7",
+                                    "props": {
+                                        "name": "password",
+                                        "placeholder": "请输入密码",
+                                        "size": "medium",
+                                        "showToggle": true
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                }
+                            ]
+                        },
+                        {
+                            "componentName": "Form.Item",
+                            "id": "node_ocmkysu82w8",
+                            "props": {
+                                "label": "\b"
+                            },
+                            "hidden": false,
+                            "title": "",
+                            "isLocked": false,
+                            "condition": true,
+                            "conditionGroup": "",
+                            "children": [
+                                {
+                                    "componentName": "Form.Submit",
+                                    "id": "node_ocmkysu82w9",
+                                    "props": {
+                                        "type": "secondary",
+                                        "validate": true,
+                                        "children": "提交",
+                                        "icon": "",
+                                        "size": "medium",
+                                        "iconSize": "xxs",
+                                        "ghost": true,
+                                        "loading": false,
+                                        "text": false,
+                                        "warning": false,
+                                        "htmlType": "",
+                                        "style": {
+                                            "backgroundColor": "#7f6be4"
+                                        }
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                },
+                                {
+                                    "componentName": "Form.Reset",
+                                    "id": "node_ocmkysu82wa",
+                                    "props": {
+                                        "style": {
+                                            "marginLeft": "10",
+                                            "backgroundColor": "#856fd6"
+                                        },
+                                        "children": "Reset",
+                                        "type": "primary",
+                                        "size": "medium",
+                                        "iconSize": "xxs",
+                                        "ghost": true,
+                                        "toDefault": true,
+                                        "loading": false,
+                                        "text": false,
+                                        "warning": false,
+                                        "disabled": false
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                }
+                            ]
                         }
                     ]
-                },
-                {
-                    "componentName": "Switch",
-                    "id": "node_ocmkve9fsw9",
-                    "props": {
-                        "prefix": "next-",
-                        "size": "medium",
-                        "disabled": false
-                    },
-                    "hidden": false,
-                    "title": "",
-                    "isLocked": false,
-                    "condition": true,
-                    "conditionGroup": ""
                 }
             ],
             "propTypes": [
@@ -346,7 +377,7 @@
                 }
             ]
         },
-        "id": "LCC-DGGBYFU0TM",
+        "id": "LCC-SEE8SSKUX5",
         "type": "lowcode",
         "version": "0.1.0"
     }

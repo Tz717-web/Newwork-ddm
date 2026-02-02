@@ -71,54 +71,21 @@ function generateNativeComponentConfig(componentName) {
         destructuring: true
     };
 
-    // 根据组件名称生成不同的配置
-    if (componentName === 'Form') {
-        return {
-            ...baseConfig,
-            componentName: 'Form',
-            exportName: 'Form'
-        };
-    } else if (componentName === 'Form.Item') {
-        return {
-            ...baseConfig,
-            componentName: 'Form.Item',
-            exportName: 'Form',
-            subName: 'Item'
-        };
-    } else if (componentName === 'Input') {
-        return {
-            ...baseConfig,
-            componentName: 'Input',
-            exportName: 'Input'
-        };
-    } else if (componentName === 'Input.Password') {
-        return {
-            ...baseConfig,
-            componentName: 'Input.Password',
-            exportName: 'Input',
-            subName: 'Password'
-        };
-    } else if (componentName === 'Form.Submit') {
-        return {
-            ...baseConfig,
-            componentName: 'Form.Submit',
-            exportName: 'Form',
-            subName: 'Submit'
-        };
-    } else if (componentName === 'Form.Reset') {
-        return {
-            ...baseConfig,
-            componentName: 'Form.Reset',
-            exportName: 'Form',
-            subName: 'Reset'
-        };
+    // 解析组件名称，判断是否有子组件（如 Button.Group）
+    let exportName = componentName;
+    let subName = "";
+
+    if (componentName.includes('.')) {
+        const parts = componentName.split('.');
+        exportName = parts[0];
+        subName = parts.slice(1).join('.');
     }
 
-    // 默认配置
     return {
         ...baseConfig,
         componentName: componentName,
-        exportName: componentName
+        exportName: exportName,
+        subName: subName
     };
 }
 
@@ -152,10 +119,49 @@ function extractNativeComponents(componentsTree) {
 }
 
 /**
+ * 递归替换所有 Lc 开头的组件为 Component
+ * @param {Object} node - 组件节点
+ */
+function replaceAllLcComponents(node) {
+    if (!node) return node;
+
+    // 如果是复合组件（Lc 开头），替换为 Component
+    if (node.componentName && node.componentName.startsWith('Lc')) {
+        return {
+            ...node,
+            componentName: 'Component'
+        };
+    }
+
+    // 递归处理子组件
+    if (node.children && Array.isArray(node.children)) {
+        return {
+            ...node,
+            children: node.children.map(child => replaceAllLcComponents(child))
+        };
+    }
+
+    return node;
+}
+
+/**
+ * 递归处理整个组件树，替换所有 Lc 开头的组件
+ * @param {Array} componentsTree - 组件树
+ */
+function processComponentsTree(componentsTree) {
+    if (!componentsTree || !Array.isArray(componentsTree)) {
+        return componentsTree;
+    }
+
+    return componentsTree.map(node => replaceAllLcComponents(node));
+}
+
+/**
  * 主函数
  */
 function main() {
     const exampleSchemaPath = path.join(__dirname, 'src', 'plugins', 'plugin-test', 'example-schema.json');
+    const exampleSchemaLowcodePath = path.join(__dirname, 'src', 'plugins', 'plugin-test', 'example-schema-lowcode.json');
     const assetsJsonPath = path.join(__dirname, 'src', 'services', 'assets.json');
 
     console.log('========================================');
@@ -176,6 +182,9 @@ function main() {
 
         let updatedSchema = { ...exampleSchemaData };
         let replaced = false;
+        let validCompositeComponents = [];
+        let allSchemaChildren = [];
+        const compositeComponentNames = new Set(compositeComponents.map(c => c.componentName));
 
         // 处理每个复合组件
         for (const compositeComp of compositeComponents) {
@@ -198,28 +207,52 @@ function main() {
             }
             console.log(`   ✅ 找到 schema`);
 
-            // 替换 Page 的 children
-            if (updatedSchema.componentsTree && Array.isArray(updatedSchema.componentsTree)) {
-                const pageComponent = updatedSchema.componentsTree.find(
-                    comp => comp.componentName === 'Page'
-                );
+            // 收集所有 schema 的 children，并立即替换 Lc 开头的组件为 Component
+            if (schema.children && Array.isArray(schema.children)) {
+                const replacedChildren = schema.children.map(child => replaceAllLcComponents(child));
+                allSchemaChildren = allSchemaChildren.concat(replacedChildren);
+            } else {
+                const replacedSchema = replaceAllLcComponents(schema);
+                allSchemaChildren.push(replacedSchema);
+            }
 
-                if (pageComponent) {
-                    console.log(`📝 正在替换 Page 的 children...`);
+            validCompositeComponents.push(compositeComp);
+            replaced = true;
+            console.log(`   ✅ 已收集 ${componentName} 的内容`);
+        }
 
-                    // 使用 schema 的内容替换 children
-                    // 如果 schema 有 children，使用它；否则使用整个 schema
-                    if (schema.children && Array.isArray(schema.children)) {
-                        pageComponent.children = schema.children;
-                    } else {
-                        pageComponent.children = [schema];
+        // 替换 Page 的 children，将所有 Lc 开头的组件替换为 Component
+        if (replaced && updatedSchema.componentsTree && Array.isArray(updatedSchema.componentsTree)) {
+            const pageComponent = updatedSchema.componentsTree.find(
+                comp => comp.componentName === 'Page'
+            );
+
+            if (pageComponent && pageComponent.children && Array.isArray(pageComponent.children)) {
+                console.log(`\n📝 正在替换 Page 的 children...`);
+
+                // 处理原有的 children，将所有 Lc 开头的组件替换为 Component
+                const processedOriginalChildren = pageComponent.children.map(child => {
+                    if (child.componentName && child.componentName.startsWith('Lc')) {
+                        console.log(`   🔧 替换原有复合组件: ${child.componentName} -> Component`);
+                        return {
+                            ...child,
+                            componentName: 'Component'
+                        };
                     }
+                    return child;
+                });
 
-                    replaced = true;
-                    console.log(`   ✅ 已替换为 ${componentName} 的内容`);
-                }
+                // 合并：替换的复合组件内容（已替换为 Component）+ 处理后的原有 children
+                pageComponent.children = [...allSchemaChildren, ...processedOriginalChildren];
+                console.log(`   ✅ 已替换为 ${allSchemaChildren.length} 个复合组件内容（已替换为 Component）+ ${processedOriginalChildren.length} 个原有子组件`);
+                console.log(`   总计: ${pageComponent.children.length} 个子组件`);
             }
         }
+
+        // 对整个 componentsTree 进行递归处理，确保所有 Lc 开头的组件都被替换为 Component
+        console.log(`\n🔧 正在递归处理整个组件树，替换所有 Lc 开头的组件...`);
+        updatedSchema.componentsTree = processComponentsTree(updatedSchema.componentsTree || []);
+        console.log(`   ✅ 已完成递归替换`);
 
         if (!replaced) {
             console.log(`\n⚠️  未进行任何替换，保留原有内容`);
@@ -240,15 +273,7 @@ function main() {
             componentName: 'Page'
         });
 
-        // 添加复合组件
-        compositeComponents.forEach(comp => {
-            componentsMap.push({
-                devMode: 'lowCode',
-                componentName: comp.componentName
-            });
-        });
-
-        // 添加原生组件依赖
+        // 不添加复合组件依赖，只添加原生组件依赖
         nativeComponents.forEach(componentName => {
             const componentConfig = generateNativeComponentConfig(componentName);
             componentsMap.push(componentConfig);
@@ -258,14 +283,15 @@ function main() {
         updatedSchema.componentsMap = componentsMap;
         console.log(`   生成了 ${componentsMap.length} 个组件配置`);
 
-        // 写入更新后的文件
-        console.log(`\n📝 正在写入 ${exampleSchemaPath}...`);
-        fs.writeFileSync(exampleSchemaPath, JSON.stringify(updatedSchema, null, 4), 'utf-8');
-        console.log(`✅ 已更新 ${exampleSchemaPath}`);
+        // 写入更新后的文件到 example-schema-lowcode.json
+        console.log(`\n📝 正在写入 ${exampleSchemaLowcodePath}...`);
+        fs.writeFileSync(exampleSchemaLowcodePath, JSON.stringify(updatedSchema, null, 4), 'utf-8');
+        console.log(`✅ 已更新 ${exampleSchemaLowcodePath}`);
 
         // 输出统计信息
         console.log(`\n📊 转换统计:`);
         console.log(`   - 复合组件数量: ${compositeComponents.length}`);
+        console.log(`   - 有效复合组件: ${validCompositeComponents.length}`);
         console.log(`   - 是否替换: ${replaced ? '是' : '否'}`);
         console.log(`   - 原生组件数量: ${nativeComponents.size}`);
         console.log(`   - componentsMap 总数: ${componentsMap.length}`);

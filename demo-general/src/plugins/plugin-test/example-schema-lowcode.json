@@ -10,40 +10,54 @@
             "version": "1.25.23",
             "main": "",
             "destructuring": true,
-            "componentName": "Search",
-            "exportName": "Search"
+            "componentName": "Form",
+            "exportName": "Form",
+            "subName": ""
         },
         {
             "package": "@alifd/next",
             "version": "1.25.23",
             "main": "",
             "destructuring": true,
-            "componentName": "Button.Group",
-            "exportName": "Button.Group"
+            "componentName": "Form.Item",
+            "exportName": "Form",
+            "subName": "Item"
         },
         {
             "package": "@alifd/next",
             "version": "1.25.23",
             "main": "",
             "destructuring": true,
-            "componentName": "Button",
-            "exportName": "Button"
+            "componentName": "Input",
+            "exportName": "Input",
+            "subName": ""
         },
         {
             "package": "@alifd/next",
             "version": "1.25.23",
             "main": "",
             "destructuring": true,
-            "componentName": "Icon",
-            "exportName": "Icon"
+            "componentName": "Input.Password",
+            "exportName": "Input",
+            "subName": "Password"
         },
         {
             "package": "@alifd/next",
             "version": "1.25.23",
             "main": "",
             "destructuring": true,
-            "componentName": "Switch",
-            "exportName": "Switch"
+            "componentName": "Form.Submit",
+            "exportName": "Form",
+            "subName": "Submit"
+        },
+        {
+            "package": "@alifd/next",
+            "version": "1.25.23",
+            "main": "",
+            "destructuring": true,
+            "componentName": "Form.Reset",
+            "exportName": "Form",
+            "subName": "Reset"
         }
     ],
     "componentsTree": [
@@ -65,7 +79,7 @@
                         "isInit": true,
                         "options": {
                             "params": {},
-                            "method": "GET",
+                            "method": "POST",
                             "isCors": true,
                             "timeout": 5000,
                             "headers": {},
@@ -93,44 +107,58 @@
             "lifeCycles": {
                 "componentDidMount": {
                     "type": "JSFunction",
-                    "value": "function componentDidMount() {\n  console.log('did mount');\n}"
+                    "value": "function componentDidMount() {\n  console.log('did mount');\n}",
+                    "source": "function componentDidMount() {\n  console.log('did mount');\n}"
                 },
                 "componentWillUnmount": {
                     "type": "JSFunction",
-                    "value": "function componentWillUnmount() {\n  console.log('will unmount');\n}"
+                    "value": "function componentWillUnmount() {\n  console.log('will unmount');\n}",
+                    "source": "function componentWillUnmount() {\n  console.log('will unmount');\n}"
                 }
             },
             "methods": {
                 "testFunc": {
                     "type": "JSFunction",
-                    "value": "function testFunc() {\n  console.log('test func');\n}"
+                    "value": "function testFunc() {\n  console.log('test func');\n}",
+                    "source": "function testFunc() {\n  console.log('test func');\n}"
                 },
                 "onClick": {
                     "type": "JSFunction",
-                    "value": "function onClick() {\n  this.setState({\n  isShowDialog: true\n  });\n}"
+                    "value": "function onClick() {\n  this.setState({\n    isShowDialog: true\n  });\n}",
+                    "source": "function onClick() {\n  this.setState({\n    isShowDialog: true\n  });\n}"
                 },
                 "closeDialog": {
                     "type": "JSFunction",
-                    "value": "function closeDialog() {\n  this.setState({\n  isShowDialog: false\n  });\n}"
+                    "value": "function closeDialog() {\n  this.setState({\n    isShowDialog: false\n  });\n}",
+                    "source": "function closeDialog() {\n  this.setState({\n    isShowDialog: false\n  });\n}"
                 },
                 "getHelloWorldText": {
                     "type": "JSFunction",
-                    "value": "function getHelloWorldText() {\n  return this.i18n('i18n-jwg27yo4');\n}"
+                    "value": "function getHelloWorldText() {\n  return this.i18n('i18n-jwg27yo4');\n}",
+                    "source": "function getHelloWorldText() {\n  return this.i18n('i18n-jwg27yo4');\n}"
                 },
                 "getHelloWorldText2": {
                     "type": "JSFunction",
-                    "value": "function getHelloWorldText2() {\n  return this.i18n('i18n-jwg27yo3', {\n  name: '絮黎'\n  });\n}"
+                    "value": "function getHelloWorldText2() {\n  return this.i18n('i18n-jwg27yo3', {\n    name: '絮黎'\n  });\n}",
+                    "source": "function getHelloWorldText2() {\n  return this.i18n('i18n-jwg27yo3', {\n    name: '絮黎'\n  });\n}"
                 },
                 "onTestConstantsButtonClicked": {
                     "type": "JSFunction",
-                    "value": "function onTestConstantsButtonClicked() {\n  console.log('constants.ConstantA:', this.constants.ConstantA);\n  console.log('constants.ConstantB:', this.constants.ConstantB);\n}"
+                    "value": "function onTestConstantsButtonClicked() {\n  console.log('constants.ConstantA:', this.constants.ConstantA);\n  console.log('constants.ConstantB:', this.constants.ConstantB);\n}",
+                    "source": "function onTestConstantsButtonClicked() {\n  console.log('constants.ConstantA:', this.constants.ConstantA);\n  console.log('constants.ConstantB:', this.constants.ConstantB);\n}"
                 },
                 "onTestUtilsButtonClicked": {
                     "type": "JSFunction",
-                    "value": "function onTestUtilsButtonClicked() {\n  this.utils.demoUtil('param1', 'param2');\n}"
+                    "value": "function onTestUtilsButtonClicked() {\n  this.utils.demoUtil('param1', 'param2');\n}",
+                    "source": "function onTestUtilsButtonClicked() {\n  this.utils.demoUtil('param1', 'param2');\n}"
+                },
+                "onClick_new": {
+                    "type": "JSFunction",
+                    "value": "function onClick_new() {\n  this.$('input.password-2f52ec0b').defaultValue = 100;\n  this.$('input.password-2f52ec0b').disabled = true;\n}",
+                    "source": "function onClick_new() {\n  this.$('input.password-2f52ec0b').defaultValue = 100;\n  this.$('input.password-2f52ec0b').disabled = true;\n}"
                 }
             },
-            "originCode": "class LowcodeComponent extends Component {\n  state = {\n    \"text\": \"outer\",\n    \"isShowDialog\": false\n  }\n  componentDidMount() {\n    console.log('did mount');\n  }\n  componentWillUnmount() {\n    console.log('will unmount');\n  }\n  testFunc() {\n    console.log('test func');\n  }\n  onClick() {\n    this.setState({\n      isShowDialog: true\n    });\n  }\n  closeDialog() {\n    this.setState({\n      isShowDialog: false\n    });\n  }\n  getHelloWorldText() {\n    return this.i18n('i18n-jwg27yo4');\n  }\n  getHelloWorldText2() {\n    return this.i18n('i18n-jwg27yo3', {\n      name: '絮黎',\n    });\n  }\n  onTestConstantsButtonClicked() {\n    console.log('constants.ConstantA:', this.constants.ConstantA);\n    console.log('constants.ConstantB:', this.constants.ConstantB);\n\t}\n\tonTestUtilsButtonClicked(){\n    this.utils.demoUtil('param1', 'param2');\n\t}\n}",
+            "originCode": "class LowcodeComponent extends Component {\n  state = {\n    \"text\": \"outer\",\n    \"isShowDialog\": false\n  }\n  componentDidMount() {\n    console.log('did mount');\n  }\n  componentWillUnmount() {\n    console.log('will unmount');\n  }\n  testFunc() {\n    console.log('test func');\n  }\n  onClick() {\n    this.setState({\n      isShowDialog: true\n    });\n  }\n  closeDialog() {\n    this.setState({\n      isShowDialog: false\n    });\n  }\n  getHelloWorldText() {\n    return this.i18n('i18n-jwg27yo4');\n  }\n  getHelloWorldText2() {\n    return this.i18n('i18n-jwg27yo3', {\n      name: '絮黎',\n    });\n  }\n  onTestConstantsButtonClicked() {\n    console.log('constants.ConstantA:', this.constants.ConstantA);\n    console.log('constants.ConstantB:', this.constants.ConstantB);\n\t}\n\tonTestUtilsButtonClicked(){\n    this.utils.demoUtil('param1', 'param2');\n\t}\n\n\tonClick_new(){\n    this.$('input.password-2f52ec0b').defaultValue = 100\n    this.$('input.password-2f52ec0b').disabled = true\n\n\t}\n}",
             "hidden": false,
             "title": "",
             "isLocked": false,
@@ -138,47 +166,17 @@
             "conditionGroup": "",
             "children": [
                 {
-                    "componentName": "Search",
-                    "id": "node_ocmkve9fswa",
+                    "componentName": "Form",
+                    "id": "node_ocmkysu82w3",
                     "props": {
-                        "dataSource": [
-                            {
-                                "label": "Recent",
-                                "value": "Recent"
-                            },
-                            {
-                                "label": "dress",
-                                "value": "dress"
-                            },
-                            {
-                                "label": "sunglasses",
-                                "value": "sunglasses"
-                            },
-                            {
-                                "label": "t-shirt",
-                                "value": "t-shirt"
-                            }
-                        ],
-                        "followTrigger": true,
-                        "searchText": "搜索",
-                        "prefix": "next-",
-                        "shape": "normal",
-                        "type": "normal",
-                        "size": "medium",
-                        "hasIcon": true,
-                        "hasClear": false,
-                        "disabled": false
+                        "labelCol": {
+                            "span": 2
+                        },
+                        "wrapperCol": {
+                            "span": 14
+                        },
+                        "labelAlign": "left"
                     },
-                    "hidden": false,
-                    "title": "",
-                    "isLocked": false,
-                    "condition": true,
-                    "conditionGroup": ""
-                },
-                {
-                    "componentName": "Button.Group",
-                    "id": "node_ocmkve9fsw5",
-                    "props": {},
                     "hidden": false,
                     "title": "",
                     "isLocked": false,
@@ -186,15 +184,11 @@
                     "conditionGroup": "",
                     "children": [
                         {
-                            "componentName": "Button",
-                            "id": "node_ocmkve9fsw6",
+                            "componentName": "Form.Item",
+                            "id": "node_ocmkysu82w4",
                             "props": {
-                                "type": "primary",
-                                "style": {
-                                    "margin": "0 5px 0 5px"
-                                },
-                                "htmlType": "submit",
-                                "children": "提交"
+                                "label": "Email: ",
+                                "required": true
                             },
                             "hidden": false,
                             "title": "",
@@ -203,10 +197,12 @@
                             "conditionGroup": "",
                             "children": [
                                 {
-                                    "componentName": "Icon",
-                                    "id": "node_ocmkve9fsw7",
+                                    "componentName": "Input",
+                                    "id": "node_ocmkysu82w5",
                                     "props": {
-                                        "type": "success"
+                                        "name": "email",
+                                        "size": "medium",
+                                        "placeholder": "用户名"
                                     },
                                     "hidden": false,
                                     "title": "",
@@ -217,37 +213,286 @@
                             ]
                         },
                         {
-                            "componentName": "Button",
-                            "id": "node_ocmkve9fsw8",
+                            "componentName": "Form.Item",
+                            "id": "node_ocmkysu82w6",
                             "props": {
-                                "type": "normal",
-                                "style": {
-                                    "margin": "0 5px 0 5px"
-                                },
-                                "htmlType": "reset",
-                                "children": "重置"
+                                "label": "Password: ",
+                                "required": true
                             },
                             "hidden": false,
                             "title": "",
                             "isLocked": false,
                             "condition": true,
-                            "conditionGroup": ""
+                            "conditionGroup": "",
+                            "children": [
+                                {
+                                    "componentName": "Input.Password",
+                                    "id": "node_ocmkysu82w7",
+                                    "props": {
+                                        "name": "password",
+                                        "placeholder": "请输入密码",
+                                        "size": "medium",
+                                        "showToggle": true
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                }
+                            ]
+                        },
+                        {
+                            "componentName": "Form.Item",
+                            "id": "node_ocmkysu82w8",
+                            "props": {
+                                "label": "\b"
+                            },
+                            "hidden": false,
+                            "title": "",
+                            "isLocked": false,
+                            "condition": true,
+                            "conditionGroup": "",
+                            "children": [
+                                {
+                                    "componentName": "Form.Submit",
+                                    "id": "node_ocmkysu82w9",
+                                    "props": {
+                                        "type": "secondary",
+                                        "validate": true,
+                                        "children": "提交",
+                                        "icon": "",
+                                        "size": "medium",
+                                        "iconSize": "xxs",
+                                        "ghost": true,
+                                        "loading": false,
+                                        "text": false,
+                                        "warning": false,
+                                        "htmlType": "",
+                                        "style": {
+                                            "backgroundColor": "#7f6be4"
+                                        }
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                },
+                                {
+                                    "componentName": "Form.Reset",
+                                    "id": "node_ocmkysu82wa",
+                                    "props": {
+                                        "style": {
+                                            "marginLeft": "10",
+                                            "backgroundColor": "#856fd6"
+                                        },
+                                        "children": "Reset",
+                                        "type": "primary",
+                                        "size": "medium",
+                                        "iconSize": "xxs",
+                                        "ghost": true,
+                                        "toDefault": true,
+                                        "loading": false,
+                                        "text": false,
+                                        "warning": false,
+                                        "disabled": false
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                }
+                            ]
                         }
                     ]
                 },
                 {
-                    "componentName": "Switch",
-                    "id": "node_ocmkve9fsw9",
+                    "componentName": "Component",
+                    "id": "node_ocml0hyafy3",
                     "props": {
-                        "prefix": "next-",
-                        "size": "medium",
-                        "disabled": false
+                        "propName": {
+                            "type": "JSSlot",
+                            "title": "propName",
+                            "id": "node_ocml0hyafy4"
+                        },
+                        "content": "",
+                        "ref": "lcc0ay1w7u92-62f10d20"
                     },
                     "hidden": false,
                     "title": "",
                     "isLocked": false,
                     "condition": true,
-                    "conditionGroup": ""
+                    "conditionGroup": "",
+                    "loopArgs": [
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "componentName": "Form",
+                    "id": "node_ocml0hyci91",
+                    "props": {
+                        "labelCol": {
+                            "span": 2
+                        },
+                        "wrapperCol": {
+                            "span": 14
+                        },
+                        "labelAlign": "left"
+                    },
+                    "hidden": false,
+                    "title": "",
+                    "isLocked": false,
+                    "condition": true,
+                    "conditionGroup": "",
+                    "children": [
+                        {
+                            "componentName": "Form.Item",
+                            "id": "node_ocml0hyci92",
+                            "props": {
+                                "label": "Email: ",
+                                "required": true
+                            },
+                            "hidden": false,
+                            "title": "",
+                            "isLocked": false,
+                            "condition": true,
+                            "conditionGroup": "",
+                            "children": [
+                                {
+                                    "componentName": "Input",
+                                    "id": "node_ocml0hyci93",
+                                    "props": {
+                                        "name": "email",
+                                        "size": "medium",
+                                        "placeholder": "用户名"
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                }
+                            ]
+                        },
+                        {
+                            "componentName": "Form.Item",
+                            "id": "node_ocml0hyci94",
+                            "props": {
+                                "label": "Password: ",
+                                "required": true
+                            },
+                            "hidden": false,
+                            "title": "",
+                            "isLocked": false,
+                            "condition": true,
+                            "conditionGroup": "",
+                            "children": [
+                                {
+                                    "componentName": "Input.Password",
+                                    "id": "node_ocml0hyci95",
+                                    "props": {
+                                        "name": "password",
+                                        "placeholder": "请输入密码",
+                                        "size": "medium",
+                                        "showToggle": true,
+                                        "ref": "input.password-2f52ec0b"
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": "",
+                                    "loopArgs": [
+                                        null,
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "componentName": "Form.Item",
+                            "id": "node_ocml0hyci96",
+                            "props": {
+                                "label": "\b"
+                            },
+                            "hidden": false,
+                            "title": "",
+                            "isLocked": false,
+                            "condition": true,
+                            "conditionGroup": "",
+                            "children": [
+                                {
+                                    "componentName": "Form.Submit",
+                                    "id": "node_ocml0hyci97",
+                                    "props": {
+                                        "type": "primary",
+                                        "validate": true,
+                                        "children": "Submit",
+                                        "icon": "",
+                                        "size": "small",
+                                        "iconSize": "xxs",
+                                        "ghost": true,
+                                        "loading": false,
+                                        "text": false,
+                                        "warning": false,
+                                        "htmlType": "",
+                                        "__events": {
+                                            "eventDataList": [
+                                                {
+                                                    "type": "componentEvent",
+                                                    "name": "onClick",
+                                                    "relatedEventName": "onClick_new"
+                                                }
+                                            ],
+                                            "eventList": [
+                                                {
+                                                    "name": "onClick",
+                                                    "description": "点击提交后触发\n@param {Object} value 数据\n@param {Object} errors 错误数据\n@param {class} field 实例",
+                                                    "disabled": true
+                                                },
+                                                {
+                                                    "name": "onMouseUp",
+                                                    "disabled": false
+                                                }
+                                            ]
+                                        },
+                                        "ref": "form.submit-92ae07ce",
+                                        "onClick": {
+                                            "type": "JSFunction",
+                                            "value": "function(){return this.onClick_new.apply(this,Array.prototype.slice.call(arguments).concat([])) }"
+                                        }
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": "",
+                                    "loopArgs": [
+                                        null,
+                                        null
+                                    ]
+                                },
+                                {
+                                    "componentName": "Form.Reset",
+                                    "id": "node_ocml0hyci98",
+                                    "props": {
+                                        "style": {
+                                            "marginLeft": 10
+                                        },
+                                        "children": "Reset"
+                                    },
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }

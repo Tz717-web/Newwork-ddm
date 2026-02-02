@@ -3,6 +3,7 @@ import { IPublicEnumTransformStage, IPublicModelPluginContext } from '@alilc/low
 import { material, project } from '@alilc/lowcode-engine';
 import CodeGenerator from '@alilc/lowcode-code-generator';
 import DemoButton from '../../components/DemoButton';
+import ReplaceComponentsButton from '../../components/ReplaceComponentsButton';
 import asserts from '../../services/assets.json';
 
 
@@ -260,6 +261,11 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
                         {/* 出码工具 */}
                         <div style={{ marginBottom: '12px' }} onClick={updateSchemaDisplay}>
                             <DemoButton />
+                        </div>
+
+                        {/* 替换组件工具 */}
+                        <div style={{ marginBottom: '12px' }} onClick={updateSchemaDisplay}>
+                            <ReplaceComponentsButton />
                         </div>
 
                         <div style={{
