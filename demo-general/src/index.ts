@@ -57,7 +57,10 @@ async function registerPlugins() {
 
 
 
-  await plugins.register(ComponentPanelPlugin);
+  await plugins.register(ComponentPanelPlugin, {
+    
+    displayName: '综合场景',
+  });
 
   await plugins.register(SchemaPlugin, { isProjectSchema: true });
 

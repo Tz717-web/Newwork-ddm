@@ -5100,6 +5100,9 @@ var pluginFactory21 = (cfg) => {
         "ice.js": "^1.0.0",
         stylelint: "^13.2.0"
       },
+      overrides: {
+        sass: "~1.32.13"
+      },
       scripts: {
         start: "icejs start",
         build: "icejs build",

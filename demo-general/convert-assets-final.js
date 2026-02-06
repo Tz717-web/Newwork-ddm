@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * 阿里物料低代码规范转换脚本 - 整合版
+ * 阿里物料低代码规范转换脚本 - 整合版（对应新增低代码功能）
  * 
  * 功能：
  * 1. 读取 xxx.json（阿里物料低代码规范的页面源码）
@@ -28,7 +28,7 @@ function generateUniqueComponentId() {
 /**
  * 从 xxx.json 生成整合后的组件配置
  */
-function generateComponentConfig(xxxData) {
+function generateComponentConfig(xxxData, title = '测试') {
     const componentId = generateUniqueComponentId();
     const componentName = generateUniqueComponentName();
 
@@ -127,7 +127,8 @@ function generateComponentConfig(xxxData) {
             },
             props: props
         },
-        title: "测试",
+        title: title,
+        group: '低代码组件',
         tags: "",
         reference: {
             destructuring: false,
@@ -148,7 +149,7 @@ function generateComponentConfig(xxxData) {
                         content: ""
                     }
                 },
-                title: "测试"
+                title: title
             }
         ],
         docUrl: "",
@@ -191,14 +192,24 @@ function generatePackageConfig(xxxData, componentId) {
 
     // 从 Page 组件中提取所有直接子组件
     let rootComponents = [];
+    let otherComponents = [];
 
     if (pageComponent && pageComponent.children && Array.isArray(pageComponent.children)) {
+        // 只整合以 Lc 开头的组件
         rootComponents = pageComponent.children.filter(child =>
-            child.componentName !== 'Page'
+            child.componentName !== 'Page' &&
+            child.componentName.startsWith('Lc')
+        );
+
+        // 其他组件（包括 Page）保持不变
+        otherComponents = pageComponent.children.filter(child =>
+            child.componentName !== 'Page' &&
+            !child.componentName.startsWith('Lc')
         );
     }
 
-    console.log(`   找到 ${rootComponents.length} 个子组件: ${rootComponents.map(c => c.componentName).join(', ')}`);
+    console.log(`   找到 ${rootComponents.length} 个需要整合的子组件: ${rootComponents.map(c => c.componentName).join(', ')}`);
+    console.log(`   找到 ${otherComponents.length} 个保持不变的子组件: ${otherComponents.map(c => c.componentName).join(', ')}`);
 
     // 生成 propTypes
     const propTypes = [
@@ -248,7 +259,8 @@ function generatePackageConfig(xxxData, componentId) {
         css: pageComponent ? (pageComponent.css || "") : "",
         dataSource: pageComponent ? (pageComponent.dataSource || { list: [] }) : { list: [] },
         condition: true,
-        children: rootComponents,
+        // children 包含整合后的组件和其他保持不变的组件
+        children: [...rootComponents, ...otherComponents],
         propTypes: propTypes
     };
 
@@ -263,7 +275,7 @@ function generatePackageConfig(xxxData, componentId) {
 /**
  * 将 xxx.json 转换为 xxx2.json 和 assets-local.json（整合版）
  */
-function convertXxxToBoth(xxxJsonPath, assetsJsonPath, xxx2JsonPath, assetsLocalJsonPath) {
+function convertXxxToBoth(xxxJsonPath, assetsJsonPath, xxx2JsonPath, assetsLocalJsonPath, title = '测试') {
     console.log(`📖 正在读取 ${xxxJsonPath}...`);
     const xxxData = JSON.parse(fs.readFileSync(xxxJsonPath, 'utf-8'));
 
@@ -271,9 +283,10 @@ function convertXxxToBoth(xxxJsonPath, assetsJsonPath, xxx2JsonPath, assetsLocal
     const assetsData = JSON.parse(fs.readFileSync(assetsJsonPath, 'utf-8'));
 
     console.log(`🔧 正在生成整合后的配置...`);
+    console.log(`📝 组件名称: ${title}`);
 
     // 生成组件配置
-    const componentConfig = generateComponentConfig(xxxData);
+    const componentConfig = generateComponentConfig(xxxData, title);
     console.log(`   生成了组件配置: ${componentConfig.componentName} (ID: ${componentConfig.componentId})`);
 
     // 生成包配置
@@ -316,6 +329,17 @@ function convertXxxToBoth(xxxJsonPath, assetsJsonPath, xxx2JsonPath, assetsLocal
  * 主函数
  */
 function main() {
+    // 解析命令行参数
+    const args = process.argv.slice(2);
+    let title = '测试';
+
+    for (let i = 0; i < args.length; i++) {
+        if (args[i] === '--title' && args[i + 1]) {
+            title = args[i + 1];
+            break;
+        }
+    }
+
     const exampleSchemaPath = path.join(__dirname, 'src', 'plugins', 'plugin-test', 'example-schema.json');
     const assetsJsonPath = path.join(__dirname, 'src', 'services', 'assets.json');
     const xxx2JsonPath = path.join(__dirname, 'public', 'xxx2.json');
@@ -326,7 +350,7 @@ function main() {
     console.log('========================================\n');
 
     try {
-        convertXxxToBoth(exampleSchemaPath, assetsJsonPath, xxx2JsonPath, assetsJsonPath);
+        convertXxxToBoth(exampleSchemaPath, assetsJsonPath, xxx2JsonPath, assetsJsonPath, title);
     } catch (error) {
         console.error(`❌ 转换失败:`, error.message);
         console.error(error.stack);

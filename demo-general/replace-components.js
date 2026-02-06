@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * 组件替换脚本
+ * 组件替换脚本(对应出码功能)
  * 
  * 功能：
  * 1. 从 example-schema.json 的 componentsMap 中识别复合组件（devMode: "lowCode" 且 componentName 不为 "Page"）
@@ -10,6 +10,7 @@ const path = require('path');
  * 3. 在 assets.json 的 packages 中找到 id 为该 componentId 的包，获取其 schema
  * 4. 将 example-schema.json 的 children 替换为 schema 的内容
  * 5. 识别替换后的子组件依赖，生成原生组件的 componentsMap 配置
+ * 6. 对于自定义组件（在 assets.json 中找到 exportName 为 "componentNameMeta" 的组件），生成自定义组件配置
  */
 
 /**
@@ -24,7 +25,8 @@ function identifyCompositeComponents(exampleSchemaData) {
 
     return exampleSchemaData.componentsMap.filter(comp =>
         comp.devMode === 'lowCode' &&
-        comp.componentName !== 'Page'
+        comp.componentName !== 'Page' &&
+        comp.componentName.startsWith('Lc')
     );
 }
 
@@ -87,6 +89,50 @@ function generateNativeComponentConfig(componentName) {
         exportName: exportName,
         subName: subName
     };
+}
+
+/**
+ * 生成自定义组件的 componentsMap 配置
+ * @param {Object} componentData - 组件数据
+ * @returns {Object} - 组件配置
+ */
+function generateCustomComponentConfig(componentData) {
+    return {
+        package: componentData.npm.package,
+        version: componentData.npm.version || "0.1.0",
+        exportName: "default",
+        main: "",
+        destructuring: false,
+        subName: "",
+        componentName: componentData.exportName.replace('Meta', '')
+    };
+}
+
+/**
+ * 检查是否为自定义组件
+ * @param {Object} assetsData - assets.json 数据
+ * @param {string} componentName - 组件名称
+ * @returns {Object|null} - 组件数据或 null
+ */
+function findCustomComponent(assetsData, componentName) {
+    if (!assetsData.components || !Array.isArray(assetsData.components)) {
+        return null;
+    }
+
+    // 查找以 componentName + "Meta" 结尾的组件
+    const metaComponent = assetsData.components.find(comp =>
+        comp.exportName === `${componentName}Meta`
+    );
+
+    if (metaComponent) {
+        console.log(`找到自定义组件元数据: ${componentName}Meta`, metaComponent);
+        return metaComponent;
+    } else {
+        console.log(`没有到自定义组件元数据: ${componentName}Meta`, metaComponent);
+
+    }
+
+    return null;
 }
 
 /**
@@ -273,11 +319,44 @@ function main() {
             componentName: 'Page'
         });
 
-        // 不添加复合组件依赖，只添加原生组件依赖
+        // 保留原有的非 Page、非 Lc 开头的组件配置（如 Demo26202）
+        if (exampleSchemaData.componentsMap && Array.isArray(exampleSchemaData.componentsMap)) {
+            exampleSchemaData.componentsMap.forEach(comp => {
+                if (comp.componentName !== 'Page' && !comp.componentName.startsWith('Lc')) {
+                    // 如果 exportName 为 "default"，清空 main 字段
+                    const componentConfig = { ...comp };
+                    if (comp.exportName === 'default') {
+                        componentConfig.main = '';
+                        console.log(`   ✅ 保留原有组件配置: ${comp.componentName} (清空 main)`);
+                    } else {
+                        console.log(`   ✅ 保留原有组件配置: ${comp.componentName}`);
+                    }
+                    componentsMap.push(componentConfig);
+                }
+            });
+        }
+
+        // 处理原生组件和自定义组件
         nativeComponents.forEach(componentName => {
-            const componentConfig = generateNativeComponentConfig(componentName);
-            componentsMap.push(componentConfig);
-            console.log(`   ✅ 添加组件: ${componentName}`);
+            // 检查是否已经在 componentsMap 中（避免重复添加）
+            const alreadyExists = componentsMap.some(comp => comp.componentName === componentName);
+            if (alreadyExists) {
+                return;
+            }
+
+            // 检查是否为自定义组件
+            const customComponent = findCustomComponent(assetsData, componentName);
+            if (customComponent) {
+                // 使用自定义组件配置
+                const componentConfig = generateCustomComponentConfig(customComponent);
+                componentsMap.push(componentConfig);
+                console.log(`   ✅ 添加自定义组件: ${componentName} (package: ${customComponent.package})`);
+            } else {
+                // 使用原生组件配置
+                const componentConfig = generateNativeComponentConfig(componentName);
+                componentsMap.push(componentConfig);
+                console.log(`   ✅ 添加原生组件: ${componentName}`);
+            }
         });
 
         updatedSchema.componentsMap = componentsMap;

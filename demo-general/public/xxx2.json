@@ -1,6 +1,6 @@
 [
     {
-        "componentId": "LCC-SEE8SSKUX5",
+        "componentId": "LCC-KKMYBU86FG",
         "icon": "",
         "experimental": {
             "initials": [
@@ -91,18 +91,19 @@
                 }
             ]
         },
-        "title": "测试",
+        "title": "登录-2",
+        "group": "低代码组件",
         "tags": "",
         "reference": {
             "destructuring": false,
-            "id": "LCC-SEE8SSKUX5",
+            "id": "LCC-KKMYBU86FG",
             "version": "0.1.0"
         },
         "devMode": "lowcode",
         "snippets": [
             {
                 "schema": {
-                    "componentName": "Lcc0ay1w7u92",
+                    "componentName": "Lcck8aifjvr5",
                     "props": {
                         "propName": {
                             "type": "JSSlot",
@@ -112,11 +113,11 @@
                         "content": ""
                     }
                 },
-                "title": "测试"
+                "title": "登录-2"
             }
         ],
         "docUrl": "",
-        "componentName": "Lcc0ay1w7u92"
+        "componentName": "Lcck8aifjvr5"
     },
     {
         "schema": {
@@ -211,8 +212,38 @@
             "condition": true,
             "children": [
                 {
+                    "componentName": "Demo26202",
+                    "id": "node_ocml5xp9xy1",
+                    "props": {
+                        "title": "",
+                        "content": ""
+                    },
+                    "hidden": false,
+                    "title": "",
+                    "isLocked": false,
+                    "condition": true,
+                    "conditionGroup": ""
+                },
+                {
+                    "componentName": "Avatar",
+                    "id": "node_ocml5xp9xy2",
+                    "props": {
+                        "prefix": "next-",
+                        "size": "medium",
+                        "shape": "circle",
+                        "icon": "smile",
+                        "children": "",
+                        "src": ""
+                    },
+                    "hidden": false,
+                    "title": "",
+                    "isLocked": false,
+                    "condition": true,
+                    "conditionGroup": ""
+                },
+                {
                     "componentName": "Form",
-                    "id": "node_ocmkysu82w3",
+                    "id": "node_ocml5xp9xy3",
                     "props": {
                         "labelCol": {
                             "span": 2
@@ -230,7 +261,7 @@
                     "children": [
                         {
                             "componentName": "Form.Item",
-                            "id": "node_ocmkysu82w4",
+                            "id": "node_ocml5xp9xy4",
                             "props": {
                                 "label": "Email: ",
                                 "required": true
@@ -243,7 +274,7 @@
                             "children": [
                                 {
                                     "componentName": "Input",
-                                    "id": "node_ocmkysu82w5",
+                                    "id": "node_ocml5xp9xy5",
                                     "props": {
                                         "name": "email",
                                         "size": "medium",
@@ -259,7 +290,7 @@
                         },
                         {
                             "componentName": "Form.Item",
-                            "id": "node_ocmkysu82w6",
+                            "id": "node_ocml5xp9xy6",
                             "props": {
                                 "label": "Password: ",
                                 "required": true
@@ -272,12 +303,11 @@
                             "children": [
                                 {
                                     "componentName": "Input.Password",
-                                    "id": "node_ocmkysu82w7",
+                                    "id": "node_ocml5xp9xy7",
                                     "props": {
                                         "name": "password",
                                         "placeholder": "请输入密码",
-                                        "size": "medium",
-                                        "showToggle": true
+                                        "size": "medium"
                                     },
                                     "hidden": false,
                                     "title": "",
@@ -289,7 +319,7 @@
                         },
                         {
                             "componentName": "Form.Item",
-                            "id": "node_ocmkysu82w8",
+                            "id": "node_ocml5xp9xy8",
                             "props": {
                                 "label": "\b"
                             },
@@ -301,22 +331,11 @@
                             "children": [
                                 {
                                     "componentName": "Form.Submit",
-                                    "id": "node_ocmkysu82w9",
+                                    "id": "node_ocml5xp9xy9",
                                     "props": {
-                                        "type": "secondary",
+                                        "type": "primary",
                                         "validate": true,
-                                        "children": "提交",
-                                        "icon": "",
-                                        "size": "medium",
-                                        "iconSize": "xxs",
-                                        "ghost": true,
-                                        "loading": false,
-                                        "text": false,
-                                        "warning": false,
-                                        "htmlType": "",
-                                        "style": {
-                                            "backgroundColor": "#7f6be4"
-                                        }
+                                        "children": "Submit"
                                     },
                                     "hidden": false,
                                     "title": "",
@@ -326,22 +345,12 @@
                                 },
                                 {
                                     "componentName": "Form.Reset",
-                                    "id": "node_ocmkysu82wa",
+                                    "id": "node_ocml5xp9xya",
                                     "props": {
                                         "style": {
-                                            "marginLeft": "10",
-                                            "backgroundColor": "#856fd6"
+                                            "marginLeft": 10
                                         },
-                                        "children": "Reset",
-                                        "type": "primary",
-                                        "size": "medium",
-                                        "iconSize": "xxs",
-                                        "ghost": true,
-                                        "toDefault": true,
-                                        "loading": false,
-                                        "text": false,
-                                        "warning": false,
-                                        "disabled": false
+                                        "children": "Reset"
                                     },
                                     "hidden": false,
                                     "title": "",
@@ -377,7 +386,7 @@
                 }
             ]
         },
-        "id": "LCC-SEE8SSKUX5",
+        "id": "LCC-KKMYBU86FG",
         "type": "lowcode",
         "version": "0.1.0"
     }

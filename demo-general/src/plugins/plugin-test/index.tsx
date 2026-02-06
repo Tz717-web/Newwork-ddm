@@ -181,8 +181,7 @@ const TangZhiTest = (ctx: IPublicModelPluginContext) => {
                 name: 'TangZhiTestPane',
                 type: 'PanelDock',
                 props: {
-                    description: 'Schema',
-
+                    description: '工具栏',
                 },
                 content: (
                     <div style={{ padding: '12px', width: '300px', height: '80vh', overflow: 'auto' }}>

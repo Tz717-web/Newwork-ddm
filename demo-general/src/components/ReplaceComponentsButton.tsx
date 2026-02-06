@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, message, Modal } from 'antd';
+import { Button, message } from 'antd';
+import { Dialog, Input } from '@alifd/next';
 
 /**
  * 替换组件按钮
@@ -11,7 +12,6 @@ interface ReplaceComponentsButtonProps {
 
 const ReplaceComponentsButton: React.FC<ReplaceComponentsButtonProps> = ({ style }) => {
     const [loading, setLoading] = React.useState(false);
-    const [visible, setVisible] = React.useState(false);
     const [serverStatus, setServerStatus] = React.useState<'idle' | 'checking' | 'running'>('idle');
 
     /**
@@ -38,24 +38,103 @@ const ReplaceComponentsButton: React.FC<ReplaceComponentsButtonProps> = ({ style
      */
     const executeReplaceScript = async () => {
         try {
+            console.log('🔄 点击了新增低代码组件按钮');
             setLoading(true);
 
             // 检查服务器状态
             const isServerRunning = await checkServerStatus();
+            console.log('🔍 服务器状态:', isServerRunning);
+
             if (!isServerRunning) {
                 message.error('服务器未运行，请先启动 command-server.js');
                 setLoading(false);
                 return;
             }
 
-            // 调用服务器 API 执行脚本
+            // 显示输入框对话框
+            setLoading(false);
+            showInputDialog();
+        } catch (error) {
+            console.error('执行脚本失败:', error);
+            setLoading(false);
+        }
+    };
+
+    /**
+     * 显示输入对话框
+     */
+    const showInputDialog = () => {
+        let inputValue = '';
+
+        Dialog.confirm({
+            content: (
+                <div style={{ backgroundColor: '#fff', padding: '20px' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                        <label style={{
+                            display: 'block',
+                            marginBottom: '8px',
+                            fontSize: '14px',
+                            color: '#333'
+                        }}>
+                            请输入组件名称：
+                        </label>
+                        <Input
+                            placeholder="例如：我的自定义组件"
+                            onChange={(value: any) => inputValue = value}
+                            onPressEnter={() => {
+                                if (inputValue.trim()) {
+                                    confirmExecuteScript(inputValue);
+                                }
+                            }}
+                            autoFocus
+                            maxLength={50}
+                        />
+                    </div>
+                    <p style={{
+                        fontSize: '12px',
+                        color: '#999',
+                        margin: 0
+                    }}>
+                        💡 提示：组件名称将用于显示在低代码编辑器中
+                    </p>
+                </div>
+            ),
+            onOk: () => {
+                if (!inputValue.trim()) {
+                    message.warning('请输入组件名称');
+                    return false;
+                }
+                confirmExecuteScript(inputValue);
+            },
+            onCancel: () => {
+                console.log('用户取消了输入');
+            },
+            okProps: { loading: loading },
+            width: 400,
+            centered: true
+        });
+    };
+
+    /**
+     * 确认执行脚本
+     */
+    const confirmExecuteScript = async (name: string) => {
+        if (!name.trim()) {
+            message.warning('请输入组件名称');
+            return;
+        }
+
+        try {
+            setLoading(true);
+
+            // 调用服务器 API 执行脚本，传递组件名称
             const response = await fetch('http://localhost:3001/api/execute-command', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    command: 'node convert-assets-final',
+                    command: `node convert-assets-final --title "${name}"`,
                     workingDirectory: 'd:\\AAAImport-Work\\Newwork-ddm\\demo-general'
                 })
             });
@@ -64,7 +143,7 @@ const ReplaceComponentsButton: React.FC<ReplaceComponentsButtonProps> = ({ style
 
             if (result.success) {
                 // 显示成功弹窗
-                setVisible(true);
+                showSuccessDialog();
                 message.success('组件替换成功！');
 
                 // 2秒后刷新页面
@@ -82,39 +161,16 @@ const ReplaceComponentsButton: React.FC<ReplaceComponentsButtonProps> = ({ style
     };
 
     /**
-     * 关闭弹窗
+     * 显示成功对话框
      */
-    const handleClose = () => {
-        setVisible(false);
-    };
-
-    return (
-        <div style={style}>
-            <Button
-                type="primary"
-                loading={loading || serverStatus === 'checking'}
-                onClick={executeReplaceScript}
-                style={{
-                    width: '100%',
-                    marginBottom: '12px'
-                }}
-            >
-                {loading ? '执行中...' : '🔄 新增低代码组件'}
-            </Button>
-
-            <Modal
-                title="✅ 导入成功"
-                visible={visible}
-                onOk={handleClose}
-                onCancel={handleClose}
-                okText="确定"
-                cancelText=""
-                width={400}
-                centered={true}
-            >
+    const showSuccessDialog = () => {
+        Dialog.confirm({
+            title: '✅ 导入成功',
+            content: (
                 <div style={{
                     padding: '20px 0',
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    backgroundColor: '#fff',
                 }}>
                     <div style={{
                         fontSize: '48px',
@@ -136,7 +192,33 @@ const ReplaceComponentsButton: React.FC<ReplaceComponentsButtonProps> = ({ style
                         页面将在 2 秒后自动刷新...
                     </p>
                 </div>
-            </Modal>
+            ),
+            onOk: () => {
+                console.log('用户确认成功');
+            },
+            onCancel: () => {
+                console.log('用户取消');
+            },
+            okText: '确定',
+            cancelText: '',
+            width: 400,
+            centered: true
+        });
+    };
+
+    return (
+        <div style={style}>
+            <Button
+                type="primary"
+                loading={loading || serverStatus === 'checking'}
+                onClick={executeReplaceScript}
+                style={{
+                    width: '100%',
+                    marginBottom: '12px'
+                }}
+            >
+                {loading ? '执行中...' : '🔄 新增低代码组件'}
+            </Button>
         </div>
     );
 };
